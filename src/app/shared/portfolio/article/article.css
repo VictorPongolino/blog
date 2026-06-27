@@ -29,7 +29,11 @@ article {
 }
 
 time {
-    font-size: clamp(0.6rem, 1vw, 1rem);
+    font-size: clamp(0.58rem, 0.85vw, 0.88rem);
+}
+
+header:has(.main-image) .author {
+    margin-bottom: clamp(6px, 1.2vw, 14px);
 }
 
 .avatar {
@@ -37,10 +41,13 @@ time {
     border-radius: 50%;
     border: 1px solid #ccc;
     object-fit: cover;
-    width: 100%;
-    max-width: 70px;
+    width: clamp(50px, 8vw, 64px);
+    height: clamp(50px, 8vw, 64px);
     aspect-ratio: 1;
-    height: 50px;
+    margin-top: clamp(4px, 0.8vw, 10px);
+    margin-inline: clamp(2px, 0.6vw, 8px);
+    justify-self: center;
+    align-self: start;
 }
 
 .author {
@@ -53,7 +60,10 @@ time {
 }
 
 .author-info {
-   font-size: 0.7rem;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2px, 0.6vw, 8px);
 }
 
 .author-info h3 {
