@@ -1,0 +1,131 @@
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: clamp(3px, 5vw, 20px);
+    margin-inline: clamp(3px, 5vw, 20px);
+}
+
+article {
+    background-color: #FFFFFF !important;
+
+    display: grid;
+    grid-template-columns: clamp(50px, 8vw, 70px) 1fr;
+    grid-template-areas:
+    "avatar author"
+    "avatar title"
+    "avatar content";
+    gap: 0px 15px;
+    padding: 10px;
+    flex: 1;
+    border-radius: 8px;
+}
+
+time {
+    font-size: clamp(0.6rem, 1vw, 1rem);
+}
+
+.avatar {
+    grid-area: avatar;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    object-fit: cover;
+    width: 100%;
+    max-width: 70px;
+    aspect-ratio: 1;
+    height: 50px;
+}
+
+.author {
+    grid-area: author;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.author-info {
+   font-size: 0.7rem;
+}
+
+.author-info h3 {
+    font-weight: bold;
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    margin-bottom: 0;
+}
+
+.article-title {
+    grid-area: title;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: bold;
+    margin: 10px 0px 0px 0px;
+}
+
+ul.tags {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    gap: 10px;
+}
+
+li.tag {
+    background-color: #dab048;
+    border-radius: 20px;
+    padding: clamp(0.5px, 1vw, 5px) clamp(0.5px, 1vw, 5px);
+}
+
+.article-title a,
+.article-body a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-image {
+    width: clamp(100px, 100%, 100%);
+    height: clamp(100px, 20vw, 200px);
+    object-fit: cover;
+}
+
+.article-content {
+    grid-area: content;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    margin-top: 2px;
+    max-width: clamp(65ch, 100%, 100ch);
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-justify: inter-word;
+}
+
+.pagination {
+    display: flex;
+    gap: 15px;
+    margin-top: clamp(10px, 2vw, 20px);
+    margin-bottom: clamp(10px, 2vw, 20px);
+    margin-right: clamp(12px, 2vw, 20px);
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.pagination a {
+    width: clamp(2rem, 4vw, 3rem);
+    height: clamp(2rem, 4vw, 3rem);
+    font-style: normal;
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #fff !important;
+    background-color: #2123a2 !important;
+    text-decoration: none;
+    border-radius: 50%;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

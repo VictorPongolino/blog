@@ -1,0 +1,32 @@
+<aside>
+    <div class="bio">
+        <div class="profile">
+            <img [src]="profile.avatar" [alt]="profile.fullName">
+            <h4>{{ profile.fullName }}</h4>
+            <p>{{ profile.title }}</p>
+        </div>
+
+        <ul class="social-links">
+            <li><a [href]="profile.socialLinks.github" class="fa-brands fa-github" target="_blank" rel="noopener noreferrer"></a></li>
+            <li><a [href]="profile.socialLinks.linkedin" class="fa-brands fa-linkedin" target="_blank" rel="noopener noreferrer"></a></li>
+            <li><a [href]="profile.socialLinks.youtube" class="fa-brands fa-youtube" target="_blank" rel="noopener noreferrer"></a></li>
+        </ul>
+    </div>
+    
+
+    @if(recommended.length > 0) {
+        <div class="suggested-articles"> 
+            <h4>Veja também</h4>
+            <ul>
+                @for(recommended_posts of recommended; track recommended_posts.slug) {
+                    <li class="suggested-article-item">
+                        <a [routerLink]="['/blog', recommended_posts.slug]">
+                            <img src="{{ recommended_posts.image }}" alt="{{ recommended_posts.title }}">
+                            <h5>{{ recommended_posts.title }}</h5>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</aside>

@@ -1,0 +1,63 @@
+<main>
+    <section>
+        @for (article of visibleArticles(); track article.slug) {
+            <article>
+                <img class="avatar" [src]="article.author.avatar" [alt]="article.author.name" />
+
+                <header>
+                    <div class="author">
+                        <div class="author-info">
+                            <h3>{{article.author.name}}</h3>
+                            <time [attr.datetime]="article.date">
+                                Postado em {{ article.date | date:"d 'de' MMM 'de' y"  }}
+                            </time>
+                        </div>
+                    </div>
+
+
+                    @if (article.picture) {
+                        <img class="main-image" [src]="article.picture" [alt]="article.title" />
+                    }
+
+                    @if ((article.tags?.length ?? 0) > 0) {
+                        <ul class="tags">
+                            @for (tag of article.tags ?? []; track tag) {
+                                <li class="tag">{{ tag }}</li>
+                            }
+                        </ul>
+                    }
+
+                    <h2 class="article-title">
+                        <a [routerLink]="['/blog', article.slug]">
+                            {{article.title}}
+                        </a>
+                    </h2>
+                </header>
+
+                    <div class="article-body">
+                        <a [routerLink]="['/blog', article.slug]">
+
+                            <p class="article-content">{{article.description}}</p>
+                        </a>
+                    </div>
+
+            </article>
+        }
+    </section>
+
+    @if (showPagination()) {
+        <nav class="pagination">
+            @for (page of pages(); track page) {
+            <a
+                class="page"
+                [class.active]="page === currentPage()"
+                [routerLink]="[]"
+                [queryParams]="{ page }"
+            >
+                {{ page }}
+            </a>
+            }
+        </nav>
+    }
+    
+</main>

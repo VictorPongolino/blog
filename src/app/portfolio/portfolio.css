@@ -1,0 +1,48 @@
+.container {
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	flex: 1;
+}
+
+app-article {
+	display: block;
+	flex: 1;
+	order: 2;
+}
+
+app-aside {
+	display: block;
+	width: 100%;
+	flex-shrink: 0;
+	order: 1;
+}
+
+app-footer {
+	display: block;
+	margin-top: auto;
+}
+
+@media (min-width: 768px) {
+	.content {
+		flex-direction: row;
+		gap: 0;
+	}
+
+	app-aside {
+		width: clamp(250px, 20%, 350px);
+		order: 2;
+		margin-right: min(5%, 80px);
+	}
+
+	app-article {
+		order: 1;
+		margin-left: min(5%, 80px);
+	}
+}
