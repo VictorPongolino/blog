@@ -9,11 +9,15 @@
 .toggleBox {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     color: white;
+    min-height: clamp(2rem, 10vw, 5rem);
+    padding-inline: 1rem;
 }
 
 section {
     background: var(--background-color);
+    min-height: clamp(2rem, 10vw, 5rem);
 }
 
 nav {
@@ -21,6 +25,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: clamp(1rem, 5vw, 2rem);
     padding: 1rem;
     gap: 1rem;
 }
@@ -42,9 +47,14 @@ nav a:hover {
 
 nav.open {
     display: flex;
+        min-height: clamp(10rem, 45vw, 14rem);
 }
 
 @media (min-width: 768px) {
+    section {
+        min-height: auto;
+    }
+
   .toggleBox {
     display: none;
   }
