@@ -1,0 +1,43 @@
+<app-blog-layout [recommended]="recommended()" [hideAsideOnMobile]="true" [addDesktopMainGap]="true">
+	@if (post(); as currentPost) {
+		<article class="post-card">
+			<header class="post-header">
+				<div class="author-row">
+					<img class="avatar" [src]="currentPost.author.avatar" [alt]="currentPost.author.name" />
+					<div class="author-info">
+						<h2>{{ currentPost.author.name }}</h2>
+						<time [attr.datetime]="currentPost.date.toISOString()">
+							Postado em {{ currentPost.date | date:"d 'de' MMM 'de' y" }}
+						</time>
+					</div>
+				</div>
+
+				@if (currentPost.picture) {
+					<img class="main-image" [src]="currentPost.picture" [alt]="currentPost.title" />
+				}
+
+				@if ((currentPost.tags?.length ?? 0) > 0) {
+					<ul class="tags">
+						@for (tag of currentPost.tags ?? []; track tag) {
+							<li class="tag">{{ tag }}</li>
+						}
+					</ul>
+				}
+
+				<h1>{{ currentPost.title }}</h1>
+			</header>
+
+			<section class="post-content">
+				<div class="post-markdown" [innerHTML]="postBodyHtml()"></div>
+			</section>
+
+			<a class="back-link" [routerLink]="['/blog']">Voltar para artigos</a>
+		</article>
+	} @else {
+		<section class="post-not-found">
+			<h1>Post nao encontrado</h1>
+			<p>O artigo que voce tentou abrir nao existe.</p>
+			<a [routerLink]="['/blog']">Voltar para artigos</a>
+		</section>
+	}
+</app-blog-layout>

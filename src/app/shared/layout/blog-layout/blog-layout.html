@@ -1,0 +1,16 @@
+<div class="container">
+  <app-navbar></app-navbar>
+
+  <div
+    class="content"
+    [class.hide-aside-mobile]="hideAsideOnMobile()"
+    [class.with-desktop-main-gap]="addDesktopMainGap()"
+  >
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+    <app-aside [recommended]="recommended()"></app-aside>
+  </div>
+
+  <app-footer></app-footer>
+</div>

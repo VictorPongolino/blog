@@ -10,6 +10,7 @@
     "slug": "teste",
     "title": "Lorem ipsum dolor sit amet",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet est lacinia, malesuada orci eu, pulvinar orci. Proin consectetur, justo non maximus dictum, augue lorem interdum sapien, sit amet egestas elit dui at felis. Maecenas nec blandit mi, nec auctor diam. Sed tristique interdum diam, eget aliquet urna sagittis id. Duis consequat iaculis dolor, ut lobortis lectus lobortis pretium. Vestibulum sagittis bibendum bibendum. Integer sed tincidunt arcu, et porta ante. Proin mauris erat, egestas a mauris quis, interdum euismod ipsum. Pellentesque posuere molestie sapien sed pharetra. Aenean varius eleifend ex at dapibus. Sed faucibus pharetra turpis et suscipit. Proin pellentesque rutrum nibh at cursus. Nullam euismod fringilla mattis.",
+    "body": "## Introducao\n\nEste post agora aceita **Markdown** no corpo.\n\n### O que voce encontra aqui\n\n- Estrutura de layout compartilhada\n- Rota de listagem em `/blog`\n- Rota de detalhe em `/blog/:slug`\n\n> Dica: voce pode escrever blocos, listas e destaque de texto.\n\n```ts\nconst slug = 'teste';\nconsole.log(`Abrindo post: ${slug}`);\n```",
     "date": "2026-06-27T00:00:00.000Z"
   },
   {
