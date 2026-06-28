@@ -79,6 +79,36 @@ header:has(.main-image) .author {
     margin: 10px 0px 0px 0px;
 }
 
+.article-title a {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.article-title a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    background-color: #dab048;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.article-title a:hover::after,
+.article-title a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+article:has(.article-body a:hover) .article-title a::after,
+article:has(.article-body a:focus-visible) .article-title a::after {
+    transform: scaleX(1);
+}
+
 ul.tags {
     display: flex;
     flex-wrap: wrap;
@@ -106,6 +136,16 @@ li.tag {
     width: clamp(100px, 100%, 100%);
     height: clamp(100px, 20vw, 200px);
     object-fit: cover;
+    transform: translateY(0) scale(1);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms ease;
+}
+
+article:has(.article-title a:hover) .main-image,
+article:has(.article-title a:focus-visible) .main-image,
+article:has(.article-body a:hover) .main-image,
+article:has(.article-body a:focus-visible) .main-image {
+    transform: translateY(-2px) scale(1.02);
+    filter: saturate(1.08) contrast(1.03);
 }
 
 .article-content {
@@ -126,6 +166,7 @@ li.tag {
     margin-right: clamp(12px, 2vw, 20px);
     justify-content: flex-end;
     align-items: center;
+    perspective: 700px;
 }
 
 .pagination a {
@@ -142,6 +183,62 @@ li.tag {
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    transition: transform 200ms ease, box-shadow 220ms ease, background-color 220ms ease;
+    transform-origin: center;
+    box-shadow: 0 0 0 rgba(33, 35, 162, 0.25);
+}
+
+.pagination a:hover,
+.pagination a:focus-visible {
+    transform: translateY(-4px) scale(1.08) rotateX(8deg);
+    box-shadow: 0 10px 18px rgba(33, 35, 162, 0.28);
+}
+
+.pagination a:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+.pagination a.active {
+    transform: translateY(-2px) scale(1.13);
+    background-color: #0f1178 !important;
+    box-shadow: 0 8px 20px rgba(15, 17, 120, 0.34);
+}
+
+.pagination a:nth-child(odd):hover,
+.pagination a:nth-child(odd):focus-visible {
+    transform: translateY(-5px) scale(1.08) rotate(-4deg);
+}
+
+.pagination a:nth-child(even):hover,
+.pagination a:nth-child(even):focus-visible {
+    transform: translateY(-5px) scale(1.08) rotate(4deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pagination a {
+        transition: background-color 150ms ease;
+        transform: none;
+    }
+
+    .article-title a::after {
+        transition: none;
+    }
+
+    .main-image {
+        transition: none;
+    }
+
+    .pagination a:hover,
+    .pagination a:focus-visible,
+    .pagination a:active,
+    .pagination a.active,
+    .pagination a:nth-child(odd):hover,
+    .pagination a:nth-child(odd):focus-visible,
+    .pagination a:nth-child(even):hover,
+    .pagination a:nth-child(even):focus-visible {
+        transform: none;
+    }
 }
 
 @media (max-width: 767px) {
