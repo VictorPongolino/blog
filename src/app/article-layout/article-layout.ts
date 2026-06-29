@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import articlesData from '../../artigos/articles.json';
 import { Article } from '../shared/portfolio/article/article';
 import { ArticleOutline } from '../shared/portfolio/article/article';
@@ -12,6 +12,12 @@ interface RecommendedArticle {
   image?: string;
   title: string;
   slug: string;
+}
+
+interface SearchedContent {
+  content?: string;
+  durationDays?: number;
+  category?: string[];
 }
 
 @Component({
@@ -32,4 +38,12 @@ export class ArticleLayout {
     title: article.title,
     slug: article.slug,
   }));
+
+  readonly searchedContent = signal<SearchedContent>({});
+  readonly showSearchControl = signal(false);
+
+  onUserSearchedContent(value: string): void {
+    this.showSearchControl.set(true);
+    this.searchedContent.update((current) => ({ ...current, content: value }));
+  }
 }

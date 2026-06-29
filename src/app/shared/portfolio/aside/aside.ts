@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import profileData from '../../../../artigos/profile.json';
 
@@ -12,8 +12,16 @@ import profileData from '../../../../artigos/profile.json';
 export class Aside {
   @Input() recommended: RecommendedArticle[] = [];
   readonly profile: Profile = profileData;
-}
+  readonly searchSubmitted = output<string>();
 
+  onSearchContent(value: string): void {
+    if (value.trim().length === 0) {
+      return;
+    }
+    
+    this.searchSubmitted.emit(value.trim());
+  }
+}
 interface RecommendedArticle { 
   image?: string;
   title: string;

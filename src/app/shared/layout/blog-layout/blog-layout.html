@@ -9,7 +9,10 @@
     <div class="main-content">
       <ng-content></ng-content>
     </div>
-    <app-aside [recommended]="recommended()"></app-aside>
+    <app-aside
+      [recommended]="recommended()"
+      (searchSubmitted)="searchSubmitted.emit($event)"
+    ></app-aside>
   </div>
 
   <app-footer></app-footer>

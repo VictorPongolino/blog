@@ -1,0 +1,29 @@
+<div class="searchbar-control">
+    <div class="filter-container">
+        <div class="dropdown">
+            <button class="filler-btn" (click)="toggleDropdown('relevancia')">{{ selected['relevancia'] }}<span>▼</span></button>
+            <ul class="dropdown-menu" [class.open]="openDropdown === 'relevancia'">
+                @for (item of ['Mais Recentes', 'Mais Antigos']; track item) {
+                    <li class="dropdown-item" (click)="selectItem('relevancia', item)">
+                        <span class="radio" [class.checked]="selected['relevancia'] === item"></span>
+                        {{ item }}
+                    </li>
+                }
+            </ul>
+        </div>
+        
+        <div class="dropdown">
+            <button class="filler-btn" (click)="toggleDropdown('tempo')">{{ selected['tempo'] }}<span>▼</span></button>
+            <ul class="dropdown-menu" [class.open]="openDropdown === 'tempo'">
+                @for (item of ['Hoje', 'Uma semana atrás', 'Um mês atrás', 'Um ano atrás', 'Sempre']; track item) {
+                    <li class="dropdown-item" (click)="selectItem('tempo', item)">
+                        <span class="radio" [class.checked]="selected['tempo'] === item"></span>
+                        {{ item }}
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="filler-line"></div>
+    </div>
+</div>

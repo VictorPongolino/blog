@@ -12,8 +12,20 @@
             <li><a [href]="profile.socialLinks.youtube" class="fa-brands fa-youtube" target="_blank" rel="noopener noreferrer"></a></li>
         </ul>
     </div>
-    
 
+    <div class="searchbar">
+        <div class="searchbar-input">
+            <input #searchInput type="text" placeholder="Pesquisar">
+            <span
+                class="material-symbols-outlined"
+                role="button"
+                tabindex="0"
+                (click)="onSearchContent(searchInput.value)"
+                (keydown.enter)="onSearchContent(searchInput.value)"
+            >search</span>
+        </div>
+    </div>
+    
     @if(recommended.length > 0) {
         <div class="suggested-articles"> 
             <h4>Veja também</h4>

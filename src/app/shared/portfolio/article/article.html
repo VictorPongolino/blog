@@ -1,4 +1,8 @@
 <main>
+    @if (showSearchControl()) {
+        <app-article-search (filterChange)="onFilterChange($event)"></app-article-search>
+    }
+
     <section>
         @for (article of visibleArticles(); track article.slug) {
             <article>

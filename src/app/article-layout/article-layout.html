@@ -1,4 +1,11 @@
-<app-blog-layout [recommended]="recommended">
+<app-blog-layout
+    [recommended]="recommended"
+    (searchSubmitted)="onUserSearchedContent($event)"
+>
     <h3 class="mobile-title">Postagens</h3>
-    <app-article [articles]="articles"></app-article>
+    <app-article
+        [articles]="articles"
+        [showSearchControl]="showSearchControl()"
+        [searchQuery]="searchedContent().content ?? ''"
+    ></app-article>
 </app-blog-layout>
