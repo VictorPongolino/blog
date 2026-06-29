@@ -27,7 +27,7 @@ export class Article {
     this.filter.set(f);
   }
 
-  private readonly filteredArticles = computed(() => {
+  readonly filteredArticles = computed(() => {
     const { order, tempo } = this.filter();
     const term = this.searchQuery().trim().toLowerCase();
     const now = new Date();

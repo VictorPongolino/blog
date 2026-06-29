@@ -13,6 +13,17 @@ section {
     margin-inline: clamp(3px, 5vw, 20px);
 }
 
+.empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    color: #999;
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    text-align: center;
+    flex-grow: 1;
+}
+
 article {
     background-color: #FFFFFF !important;
 

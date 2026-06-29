@@ -4,6 +4,11 @@
     }
 
     <section>
+        @if (filteredArticles().length === 0) {
+            <div class="empty-state">
+                <p>Nenhum artigo encontrado.</p>
+            </div>
+        }
         @for (article of visibleArticles(); track article.slug) {
             <article>
                 <img class="avatar" [src]="article.author.avatar" [alt]="article.author.name" />
