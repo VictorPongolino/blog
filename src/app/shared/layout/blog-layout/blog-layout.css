@@ -43,12 +43,14 @@ app-footer {
   .content {
     flex-direction: row;
     gap: 0;
+    align-items: flex-start;
   }
 
   app-aside {
     width: clamp(250px, 20%, 350px);
     order: 2;
     margin-right: min(5%, 80px);
+    margin-bottom: clamp(140px, 16vw, 340px);
   }
 
   .main-content {
