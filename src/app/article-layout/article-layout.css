@@ -2,10 +2,25 @@
     display: none;
 }
 
+.mobile-title span {
+    display: block;
+    flex: 1;
+    height: 1px;
+    background-color: #111;
+}
+
 @media (max-width: 767px) {
     .mobile-title {
-        display: block;
-        margin-inline: clamp(3px, 5vw, 20px);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-inline: calc(clamp(3px, 5vw, 15px) + 10px);
+    }
+
+    .mobile-title h3 {
+        margin: 0;
+        font-weight: bold;
         font-size: clamp(1.2rem, 2vw, 1.5rem);
+        line-height: 1.2;
     }
 }

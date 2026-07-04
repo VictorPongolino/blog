@@ -5,6 +5,12 @@ main {
     justify-content: space-between;
 }
 
+app-article-search {
+    display: block;
+    margin-top: clamp(10px, 2vw, 24px);
+    margin-inline: clamp(3px, 5vw, 20px);
+}
+
 section {
     display: flex;
     flex-direction: column;

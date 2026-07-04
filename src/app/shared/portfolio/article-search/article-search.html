@@ -59,20 +59,39 @@
     </div>
   </div>
 } @else {
-  <div class="dropdown">
-    <button class="filler-btn" (click)="toggleDropdown('relevancia')">
-      {{ selected['relevancia']
-      }}<span [class.open]="openDropdown === 'relevancia'">{{
-        openDropdown === 'relevancia' ? '▲' : '▼'
-      }}</span>
-    </button>
-    <ul class="dropdown-menu">
-      @for (item of ['Mais Recentes', 'Mais Antigos']; track item) {
-        <li class="dropdown-item" (click)="selectItem('relevancia', item)">
-          <span class="radio" [class.checked]="selected['relevancia'] === item"></span>
-          {{ item }}
-        </li>
-      }
-    </ul>
+  <div class="filter-post">
+    <div class="dropdown">
+      <button class="filler-btn" (click)="toggleDropdown('relevancia')">
+        {{ selected['relevancia'] }}
+        <span [class.open]="openDropdown === 'relevancia'">{{
+          openDropdown === 'relevancia' ? '▲' : '▼'
+        }}</span>
+      </button>
+      <ul class="dropdown-menu" [class.open]="openDropdown === 'relevancia'">
+        @for (item of ['Mais Recentes', 'Mais Antigos']; track item) {
+          <li class="dropdown-item" (click)="selectItem('relevancia', item)">
+            <span class="radio" [class.checked]="selected['relevancia'] === item"></span>
+            {{ item }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="filler-btn" (click)="toggleDropdown('categoria')">
+        {{ selected['categoria']
+        }}<span [class.open]="openDropdown === 'categoria'">{{
+          openDropdown === 'categoria' ? '▲' : '▼'
+        }}</span>
+      </button>
+      <ul class="dropdown-menu" [class.open]="openDropdown === 'categoria'">
+        @for (item of categories(); track item) {
+          <li class="dropdown-item" (click)="selectItem('categoria', item)">
+            <span class="radio" [class.checked]="selected['categoria'] === item"></span>
+            {{ item }}
+          </li>
+        }
+      </ul>
+    </div>
   </div>
 }

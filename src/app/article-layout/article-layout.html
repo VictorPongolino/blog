@@ -2,7 +2,11 @@
     [recommended]="recommended"
     (searchSubmitted)="onUserSearchedContent($event)"
 >
-    <h3 class="mobile-title">Postagens</h3>
+    <div class="mobile-title">
+        <span> </span>
+        <h3>Postagens</h3>
+        <span> </span>
+    </div>    
     <app-article
         [articles]="articles"
         [showSearchControl]="showSearchControl()"

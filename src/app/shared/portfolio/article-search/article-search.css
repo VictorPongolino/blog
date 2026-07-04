@@ -24,8 +24,14 @@
     outline: none;
     border: none;
     cursor: pointer;
+    padding: clamp(4px, 0.8vw, 10px) clamp(8px, 1.6vw, 20px);
     font-size: clamp(1rem, 1vw, 1.5rem);
     background-color: transparent;
+}
+
+.filler-btn:hover {
+    background-color: #ccc;
+    border-radius: 15px;
 }
 
 .dropdown span.open {
@@ -50,6 +56,7 @@
     transform: scaleY(0);
     transform-origin: top;
     opacity: 0;
+    border-radius: 10px;
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -86,4 +93,9 @@
     inset: 2px;
     background-color: #333;
     border-radius: 50%;
+}
+
+.filter-post {
+    display: flex;
+    margin-top: clamp(4px, 0.8vw, 10px);
 }
