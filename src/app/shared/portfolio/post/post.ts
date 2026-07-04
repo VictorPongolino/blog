@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { marked } from 'marked';
 import { map } from 'rxjs';
 import articlesData from '../../../../artigos/articles.json';
+import profileData from '../../../../artigos/profile.json';
 import { BlogLayout } from '../../layout/blog-layout/blog-layout';
 
 interface Author {
@@ -18,7 +19,7 @@ interface ArticlePost {
   slug: string;
   picture?: string;
   thumbnail?: string;
-  tags?: string[];
+  tags?: { slug: string; name: string }[];
   description: string;
   body?: string;
   date: Date;
@@ -43,6 +44,10 @@ export class Post {
 
   private readonly articles: ArticlePost[] = articlesData.map(article => ({
     ...article,
+    author: {
+      name: profileData.fullName,
+      avatar: profileData.avatar
+    },
     date: new Date(article.date),
   }));
 

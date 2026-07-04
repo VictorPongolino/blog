@@ -85,10 +85,15 @@ export interface ArticleOutline {
   title: string;
   slug: string;
   picture?: string;
-  tags?: string[];
+  tags?: Tags[];
   description: string;
   body?: string;
   date: Date;
+}
+
+export interface Tags {
+  slug: string;
+  name: string;
 }
 
 export interface Author {

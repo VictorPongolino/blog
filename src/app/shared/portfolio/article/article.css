@@ -134,7 +134,18 @@ ul.tags {
 li.tag {
     background-color: #dab048;
     border-radius: 20px;
-    padding: clamp(0.5px, 1vw, 5px) clamp(0.5px, 1vw, 5px);
+    padding: clamp(0.5px, 1vw, 6px) clamp(0.5px, 1vw, 7px);
+}
+
+li.tag a {
+    text-decoration: none;
+    color: black;
+    font-size: clamp(0.6rem, 1vw, 1rem);
+}
+
+li.tag a:hover,
+li.tag a:focus-visible {
+    text-decoration: underline;
 }
 
 .article-title a,

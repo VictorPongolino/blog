@@ -1,5 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import articlesData from '../../artigos/articles.json';
+import profileData from '../../artigos/profile.json';
 import { Article } from '../shared/portfolio/article/article';
 import { ArticleOutline } from '../shared/portfolio/article/article';
 import { BlogLayout } from '../shared/layout/blog-layout/blog-layout';
@@ -30,6 +31,10 @@ interface SearchedContent {
 export class ArticleLayout {
   readonly articles: ArticleContent[] = articlesData.map(article => ({
     ...article,
+    author: {
+      name: profileData.fullName,
+      avatar: profileData.avatar
+    },
     date: new Date(article.date),
   }));
 
