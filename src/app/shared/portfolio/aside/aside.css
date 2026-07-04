@@ -174,7 +174,7 @@ div.suggested-articles h4 {
         margin: 12px;
     }
 
-    .suggested-articles h4,
+    div.suggested-articles h4,
     .bio {
         display: none; 
     }
