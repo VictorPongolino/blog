@@ -3,6 +3,7 @@ import { Component, ElementRef, HostListener, input, output, signal } from '@ang
 export interface FilterState {
     order: string;
     tempo: string;
+    categoria: string;
 }
 
 @Component({
@@ -16,10 +17,11 @@ export class ArticleSearch {
     openDropdown: string | null = null;
     filterChange = output<FilterState>();
     showAdvancedSearchBar = input<boolean>(false);
-
+    categories = input<string[]>([]);
     selected: Record<string, string> = {
         relevancia: 'Mais Recentes',
         tempo: 'Sempre',
+        categoria: 'Todas',
     };
 
     constructor(private elRef: ElementRef) {}
@@ -31,7 +33,7 @@ export class ArticleSearch {
     selectItem(dropdown: string, item: string): void {
         this.selected[dropdown] = item;
         this.openDropdown = null;
-        this.filterChange.emit({ order: this.selected['relevancia'], tempo: this.selected['tempo'] });
+        this.filterChange.emit({ order: this.selected['relevancia'], tempo: this.selected['tempo'], categoria: this.selected['categoria'] });
     }
 
     @HostListener('document:click', ['$event.target'])

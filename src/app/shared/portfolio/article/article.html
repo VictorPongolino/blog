@@ -1,6 +1,7 @@
 <main>
     <app-article-search 
         [showAdvancedSearchBar]="showSearchControl()" 
+        [categories]="categories()"
         (filterChange)="onFilterChange($event)">     
     </app-article-search>
 

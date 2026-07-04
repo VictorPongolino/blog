@@ -21,7 +21,16 @@ export class Article {
   readonly searchQuery = input('');
 
   readonly currentPage = toSignal(this.route.queryParamMap.pipe(map(params => Number(params.get('page') || 1))), { initialValue: 1 });
-  readonly filter = signal<FilterState>({ order: 'Mais Recentes', tempo: 'Sempre' });
+  readonly filter = signal<FilterState>({ order: 'Mais Recentes', tempo: 'Sempre', categoria: 'Todas' });
+  readonly categories = computed(() => {
+    const uniqueCategories = new Set<string>();
+    uniqueCategories.add('Todas');
+    this.articles().forEach(article => {
+      article.tags?.forEach(tag => uniqueCategories.add(tag.name));
+    });
+    return Array.from(uniqueCategories);
+  });
+
   readonly hasSearchQuery = computed(() => this.searchQuery().trim().length > 0);
 
   onFilterChange(f: FilterState): void {
@@ -29,7 +38,7 @@ export class Article {
   }
 
   readonly filteredArticles = computed(() => {
-    const { order, tempo } = this.filter();
+    const { order, tempo, categoria } = this.filter();
     const term = this.searchQuery().trim().toLowerCase();
     const now = new Date();
 
@@ -38,6 +47,12 @@ export class Article {
         const text = `${a.author.name} ${a.title} ${a.description} ${a.body ?? ''}`.toLowerCase();
         const matches = term ? (text.match(new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'))?.length ?? 0) : 0;
         return { article: a, matches };
+      })
+      .filter(({ article: a }) => {
+        if (categoria !== 'Todas' && !a.tags?.some(tag => tag.name.toLowerCase() === categoria.toLowerCase())) {
+          return false;
+        }
+        return true;
       })
       .filter(({ article: a, matches }) => {
         if (term && matches === 0) return false;
