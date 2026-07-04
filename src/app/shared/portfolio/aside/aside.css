@@ -53,7 +53,7 @@ aside {
     max-width: 420px;
     min-height: 46px;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
     gap: 10px;
     padding: 0 14px;
@@ -75,10 +75,19 @@ aside {
 .searchbar-input .material-symbols-outlined {
     font-size: 22px;
     line-height: 1;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: #6b6b6b;
+}
+
+.searchbar-input .close-btn {
+    display: none;
+}
+
+.searchbar-input input:not(:placeholder-shown) + .close-btn {
+    display: inline-block;
 }
 
 ul.social-links {

@@ -43,6 +43,11 @@ export class ArticleLayout {
   readonly showSearchControl = signal(false);
 
   onUserSearchedContent(value: string): void {
+    if (value.trim().length === 0) {
+      this.showSearchControl.set(false);
+      return;
+    }
+    
     this.showSearchControl.set(true);
     this.searchedContent.update((current) => ({ ...current, content: value }));
   }

@@ -22,6 +22,7 @@ export class Article {
 
   readonly currentPage = toSignal(this.route.queryParamMap.pipe(map(params => Number(params.get('page') || 1))), { initialValue: 1 });
   readonly filter = signal<FilterState>({ order: 'Mais Recentes', tempo: 'Sempre' });
+  readonly hasSearchQuery = computed(() => this.searchQuery().trim().length > 0);
 
   onFilterChange(f: FilterState): void {
     this.filter.set(f);
@@ -58,14 +59,24 @@ export class Article {
     return scored.map(s => s.article);
   });
 
+  readonly sourceArticles = computed(() => {
+    const filtered = this.filteredArticles();
+
+    if (this.hasSearchQuery() && filtered.length === 0) {
+      return this.articles();
+    }
+
+    return filtered;
+  });
+
   readonly visibleArticles = computed(() => {
     const start = (this.currentPage() - 1) * this.maxItemsPerPage();
     const end = start + this.maxItemsPerPage();
-    return this.filteredArticles().slice(start, end);
+    return this.sourceArticles().slice(start, end);
   });
 
-  readonly showPagination: Signal<boolean> = computed(() => this.filteredArticles().length > this.maxItemsPerPage());
-  readonly pages = computed(() => Array.from({ length: Math.ceil(this.filteredArticles().length / this.maxItemsPerPage()) }, (_, i) => i + 1));
+  readonly showPagination: Signal<boolean> = computed(() => this.sourceArticles().length > this.maxItemsPerPage());
+  readonly pages = computed(() => Array.from({ length: Math.ceil(this.sourceArticles().length / this.maxItemsPerPage()) }, (_, i) => i + 1));
 
 }
 

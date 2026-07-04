@@ -1,14 +1,16 @@
 <main>
-    @if (showSearchControl()) {
-        <app-article-search (filterChange)="onFilterChange($event)"></app-article-search>
-    }
+    <app-article-search 
+        [showAdvancedSearchBar]="showSearchControl()" 
+        (filterChange)="onFilterChange($event)">     
+    </app-article-search>
 
     <section>
-        @if (filteredArticles().length === 0) {
+        @if (filteredArticles().length === 0 && showSearchControl()) {
             <div class="empty-state">
-                <p>Nenhum artigo encontrado.</p>
+                <p>Nenhum artigo encontrado com a pesquisa atual.</p>
             </div>
         }
+
         @for (article of visibleArticles(); track article.slug) {
             <article>
                 <img class="avatar" [src]="article.author.avatar" [alt]="article.author.name" />

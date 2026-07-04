@@ -17,6 +17,12 @@
         <div class="searchbar-input">
             <input #searchInput type="text" placeholder="Pesquisar">
             <span
+                class="material-symbols-outlined close-btn"
+                role="button"
+                tabindex="0"
+                (click)="searchInput.value = ''; onStopSearch()"
+            >close</span>
+            <span
                 class="material-symbols-outlined"
                 role="button"
                 tabindex="0"

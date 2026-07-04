@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, output } from '@angular/core';
+import { Component, ElementRef, HostListener, input, output, signal } from '@angular/core';
 
 export interface FilterState {
     order: string;
@@ -15,6 +15,7 @@ export interface FilterState {
 export class ArticleSearch {
     openDropdown: string | null = null;
     filterChange = output<FilterState>();
+    showAdvancedSearchBar = input<boolean>(false);
 
     selected: Record<string, string> = {
         relevancia: 'Mais Recentes',

@@ -14,12 +14,12 @@ export class Aside {
   readonly profile: Profile = profileData;
   readonly searchSubmitted = output<string>();
 
-  onSearchContent(value: string): void {
-    if (value.trim().length === 0) {
-      return;
-    }
-    
+  onSearchContent(value: string): void {   
     this.searchSubmitted.emit(value.trim());
+  }
+
+  onStopSearch(): void {
+    this.searchSubmitted.emit('');
   }
 }
 interface RecommendedArticle { 
