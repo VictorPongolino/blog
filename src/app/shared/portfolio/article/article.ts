@@ -77,10 +77,14 @@ export class Article {
   readonly sourceArticles = computed(() => {
     const filtered = this.filteredArticles();
 
+    const { order, tempo, categoria } = this.filter();
+    console.log(`Filtered articles with order: ${order}, tempo: ${tempo}, categoria: ${categoria}, searchQuery: "${this.searchQuery()}"`);
+
     if (this.hasSearchQuery() && filtered.length === 0) {
+      console.warn(`No articles found for search query: "${this.searchQuery()}"`);
       return this.articles();
     }
-
+    
     return filtered;
   });
 
