@@ -37,6 +37,15 @@ export class Article {
     this.filter.set(f);
   }
 
+  onPaginationClick(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  }
+
   readonly filteredArticles = computed(() => {
     const { order, tempo, categoria } = this.filter();
     const term = this.searchQuery().trim().toLowerCase();

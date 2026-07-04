@@ -69,6 +69,7 @@
                 [class.active]="page === currentPage()"
                 [routerLink]="[]"
                 [queryParams]="{ page }"
+                (click)="onPaginationClick()"
             >
                 {{ page }}
             </a>
