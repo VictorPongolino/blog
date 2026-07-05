@@ -102,6 +102,18 @@
         <source>Contato</source>
         <target>Contact</target>
       </trans-unit>
+      <trans-unit id="navbar-language-switcher-aria" datatype="html">
+        <source>Language switcher</source>
+        <target>Language switcher</target>
+      </trans-unit>
+      <trans-unit id="navbar-language-en-aria" datatype="html">
+        <source>Switch to English</source>
+        <target>Switch to English</target>
+      </trans-unit>
+      <trans-unit id="navbar-language-pt-aria" datatype="html">
+        <source>Mudar para português</source>
+        <target>Switch to Portuguese</target>
+      </trans-unit>
       <trans-unit id="post-date" datatype="html">
         <source> Postado em <x id="INTERPOLATION" equiv-text="{{ currentPost.date | date:&quot;d &apos;de&apos; MMM &apos;de&apos; y&quot; }}"/> </source>
         <target> Posted on <x id="INTERPOLATION" equiv-text="{{ currentPost.date | date:&quot;d &apos;de&apos; MMM &apos;de&apos; y&quot; }}"/> </target>

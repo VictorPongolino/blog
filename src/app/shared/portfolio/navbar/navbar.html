@@ -8,8 +8,36 @@
         </svg>
     </div>
     <nav [class.open]="isMenuOpen()">
-        <a [routerLink]="['/']" i18n="@@navbar-portfolio">Portfólio</a>
-        <a [routerLink]="['/']" i18n="@@navbar-contact">Contato</a>
+        <div class="nav-links">
+            <a [routerLink]="['/']" (click)="closeMenu()" i18n="@@navbar-portfolio">Portfólio</a>
+            <a [routerLink]="['/']" (click)="closeMenu()" i18n="@@navbar-contact">Contato</a>
+        </div>
+
+        <div class="language-switcher" aria-label="Language switcher" i18n-aria-label="@@navbar-language-switcher-aria">
+            <a
+                class="language-link language-link--en"
+                [class.active]="currentLocale() === 'en'"
+                [attr.href]="languageHref('en')"
+                (click)="closeMenu()"
+                aria-label="Switch to English"
+                i18n-aria-label="@@navbar-language-en-aria"
+            >
+                <i class="fa-solid fa-flag-usa" aria-hidden="true"></i>
+                <span class="language-code">EN</span>
+            </a>
+
+            <a
+                class="language-link language-link--pt"
+                [class.active]="currentLocale() === 'pt'"
+                [attr.href]="languageHref('pt')"
+                (click)="closeMenu()"
+                aria-label="Mudar para português"
+                i18n-aria-label="@@navbar-language-pt-aria"
+            >
+                <i class="fa-solid fa-flag" aria-hidden="true"></i>
+                <span class="language-code">PT</span>
+            </a>
+        </div>
     </nav>
 </section>
 
