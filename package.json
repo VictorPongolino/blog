@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:gh-pages": "ng build --localize --base-href /blog/",
+    "preview:gh-pages": "npx http-server dist/blog/browser -p 4200 -c-1",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

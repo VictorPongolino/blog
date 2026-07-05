@@ -11,22 +11,24 @@
         baseHref += '/';
       }
 
+      var appRoot = baseHref.replace(/(en|pt)\/$/, '');
+
       var path = window.location.pathname;
-      var rootPath = baseHref.slice(0, -1);
-      var escapedBase = baseHref.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      var localePathPattern = new RegExp('^' + escapedBase + '(en|pt)(/|$)');
+      var rootPath = appRoot.slice(0, -1);
+      var escapedRoot = appRoot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var localePathPattern = new RegExp('^' + escapedRoot + '(en|pt)(/|$)');
 
       if (localePathPattern.test(path)) {
         return;
       }
 
-      if (path !== baseHref && path !== rootPath) {
+      if (path !== appRoot && path !== rootPath) {
         return;
       }
 
       var userLanguage = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
       if (userLanguage.startsWith('pt')) {
-        window.location.replace(baseHref + 'pt/');
+        window.location.replace(appRoot + 'pt/');
       }
     })();
   </script>

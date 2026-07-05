@@ -17,14 +17,14 @@ export class Navbar {
   }
 
   languageHref(locale: 'en' | 'pt'): string {
-    const baseHref = this.getBaseHref();
+    const appRoot = this.getAppRoot();
     const currentHash = this.getCurrentHash();
 
     if (locale === 'pt') {
-      return `${baseHref}pt/${currentHash}`;
+      return `${appRoot}pt/${currentHash}`;
     }
 
-    return `${baseHref}${currentHash}`;
+    return `${appRoot}${currentHash}`;
   }
 
   closeMenu(): void {
@@ -39,13 +39,14 @@ export class Navbar {
     return window.location.pathname.includes('/pt/') ? 'pt' : 'en';
   }
 
-  private getBaseHref(): string {
+  private getAppRoot(): string {
     if (typeof document === 'undefined') {
       return '/';
     }
 
     const baseHref = document.querySelector('base')?.getAttribute('href') ?? '/';
-    return baseHref.endsWith('/') ? baseHref : `${baseHref}/`;
+    const normalizedBaseHref = baseHref.endsWith('/') ? baseHref : `${baseHref}/`;
+    return normalizedBaseHref.replace(/(en|pt)\/$/, '');
   }
 
   private getCurrentHash(): string {
