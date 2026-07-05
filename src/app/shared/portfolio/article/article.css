@@ -146,6 +146,7 @@ li.tag {
 li.tag a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
     font-size: clamp(0.6rem, 1vw, 1rem);
 }
 

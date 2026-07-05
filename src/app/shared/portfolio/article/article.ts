@@ -31,10 +31,13 @@ export class Article {
     return Array.from(uniqueCategories);
   });
 
-  readonly hasSearchQuery = computed(() => this.searchQuery().trim().length > 0);
 
   onFilterChange(f: FilterState): void {
     this.filter.set(f);
+  }
+
+  onCategoryFilterClick(tag: { name: string }): void {
+    this.filter.update(f => ({ ...f, categoria: tag.name }));
   }
 
   onPaginationClick(): void {
@@ -89,7 +92,7 @@ export class Article {
     const { order, tempo, categoria } = this.filter();
     console.log(`Filtered articles with order: ${order}, tempo: ${tempo}, categoria: ${categoria}, searchQuery: "${this.searchQuery()}"`);
 
-    if (this.hasSearchQuery() && filtered.length === 0) {
+    if (this.searchQuery().trim().length > 0 && filtered.length === 0) {
       console.warn(`No articles found for search query: "${this.searchQuery()}"`);
       return this.articles();
     }
