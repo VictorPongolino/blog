@@ -15,12 +15,14 @@
 
     <div class="searchbar">
         <div class="searchbar-input">
-            <input #searchInput type="text" placeholder="Pesquisar">
+            <input #searchInput type="text" placeholder="Pesquisar" i18n-placeholder="@@aside-search-placeholder">
             <span
                 class="material-symbols-outlined close-btn"
                 role="button"
                 tabindex="0"
                 (click)="searchInput.value = ''; onStopSearch()"
+                i18n-aria-label="@@aside-clear-search-aria"
+                aria-label="Limpar busca"
             >close</span>
             <span
                 class="material-symbols-outlined"
@@ -28,13 +30,15 @@
                 tabindex="0"
                 (click)="onSearchContent(searchInput.value)"
                 (keydown.enter)="onSearchContent(searchInput.value)"
+                i18n-aria-label="@@aside-search-action-aria"
+                aria-label="Pesquisar"
             >search</span>
         </div>
     </div>
     
     @if(recommended.length > 0) {
         <div class="suggested-articles"> 
-            <h4>Veja também</h4>
+            <h4 i18n="@@aside-see-also">Veja também</h4>
             <ul>
                 @for(recommended_posts of recommended; track recommended_posts.slug) {
                     <li class="suggested-article-item">

@@ -8,20 +8,20 @@
 
     <section>
         @if (filteredArticles().length === 0 && showSearchControl()) {
-            <div class="empty-state">
+            <div class="empty-state" i18n="@@no-articles-found-search">
                 <p>Nenhum artigo encontrado com a pesquisa atual.</p>
             </div>
         }
 
         @for (article of visibleArticles(); track article.slug) {
             <article>
-                <img class="avatar" [src]="article.author.avatar" [alt]="article.author.name" />
+                <img class="avatar" [src]="article.author.avatar" [alt]="article.author.name" i18n-alt="@@author-avatar-alt" />
 
                 <header>
                     <div class="author">
                         <div class="author-info">
                             <h3>{{article.author.name}}</h3>
-                            <time [attr.datetime]="article.date">
+                            <time [attr.datetime]="article.date" i18n="@@article-list-date">
                                 Postado em {{ article.date | date:"d 'de' MMM 'de' y"  }}
                             </time>
                         </div>
@@ -29,7 +29,7 @@
 
 
                     @if (article.picture) {
-                        <img class="main-image" [src]="article.picture" [alt]="article.title" />
+                        <img class="main-image" [src]="article.picture" [alt]="article.title" i18n-alt="@@article-main-image-alt" />
                     }
 
                     @if ((article.tags?.length ?? 0) > 0) {
@@ -56,7 +56,7 @@
 
             </article>
         } @empty {
-            <div class="empty-state">
+            <div class="empty-state" i18n="@@no-articles-found-page">
                 <p>Nenhum artigo encontrado na página atual!</p>
             </div>
         }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pt" target-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="article-layout-mobile-title" datatype="html">
+        <source>Postagens</source>
+        <target>Posts</target>
+      </trans-unit>
+      <trans-unit id="article-search-order-recent" datatype="html">
+        <source>Mais Recentes</source>
+        <target>Newest</target>
+      </trans-unit>
+      <trans-unit id="article-search-order-oldest" datatype="html">
+        <source>Mais Antigos</source>
+        <target>Oldest</target>
+      </trans-unit>
+      <trans-unit id="article-search-time-today" datatype="html">
+        <source>Hoje</source>
+        <target>Today</target>
+      </trans-unit>
+      <trans-unit id="article-search-time-week" datatype="html">
+        <source>Uma semana atrás</source>
+        <target>One week ago</target>
+      </trans-unit>
+      <trans-unit id="article-search-time-month" datatype="html">
+        <source>Um mês atrás</source>
+        <target>One month ago</target>
+      </trans-unit>
+      <trans-unit id="article-search-time-year" datatype="html">
+        <source>Um ano atrás</source>
+        <target>One year ago</target>
+      </trans-unit>
+      <trans-unit id="article-search-time-all" datatype="html">
+        <source>Sempre</source>
+        <target>Any time</target>
+      </trans-unit>
+      <trans-unit id="article-search-category-all" datatype="html">
+        <source>Todas</source>
+        <target>All</target>
+      </trans-unit>
+      <trans-unit id="no-articles-found-search" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Nenhum artigo encontrado com a pesquisa atual.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <target><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>No articles found for the current search.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="article-list-date" datatype="html">
+        <source> Postado em <x id="INTERPOLATION" equiv-text="{{ article.date | date:&quot;d &apos;de&apos; MMM &apos;de&apos; y&quot;  }}"/> </source>
+        <target> Posted on <x id="INTERPOLATION" equiv-text="{{ article.date | date:&quot;d &apos;de&apos; MMM &apos;de&apos; y&quot;  }}"/> </target>
+      </trans-unit>
+      <trans-unit id="no-articles-found-page" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Nenhum artigo encontrado na página atual!<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <target><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>No articles found on the current page!<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="aside-search-placeholder" datatype="html">
+        <source>Pesquisar</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="aside-clear-search-aria" datatype="html">
+        <source>Limpar busca</source>
+        <target>Clear search</target>
+      </trans-unit>
+      <trans-unit id="aside-search-action-aria" datatype="html">
+        <source>Pesquisar</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="aside-see-also" datatype="html">
+        <source>Veja também</source>
+        <target>See also</target>
+      </trans-unit>
+      <trans-unit id="footer-description" datatype="html">
+        <source>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem veniam maiores quasi consequatur similique id culpa omnis temporibus consequuntur explicabo. Blanditiis aliquid tempore quidem officia! Iure atque ullam officiis eum?</source>
+        <target>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem veniam maiores quasi consequatur similique id culpa omnis temporibus consequuntur explicabo. Blanditiis aliquid tempore quidem officia! Iure atque ullam officiis eum?</target>
+      </trans-unit>
+      <trans-unit id="footer-social-linkedin-aria" datatype="html">
+        <source>LinkedIn</source>
+        <target>LinkedIn</target>
+      </trans-unit>
+      <trans-unit id="footer-social-github-aria" datatype="html">
+        <source>GitHub</source>
+        <target>GitHub</target>
+      </trans-unit>
+      <trans-unit id="footer-social-youtube-aria" datatype="html">
+        <source>YouTube</source>
+        <target>YouTube</target>
+      </trans-unit>
+      <trans-unit id="footer-menu-home" datatype="html">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="footer-menu-portfolio" datatype="html">
+        <source>Portfolio</source>
+        <target>Portfolio</target>
+      </trans-unit>
+      <trans-unit id="footer-menu-contact" datatype="html">
+        <source>Contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="navbar-portfolio" datatype="html">
+        <source>Portfólio</source>
+        <target>Portfolio</target>
+      </trans-unit>
+      <trans-unit id="navbar-contact" datatype="html">
+        <source>Contato</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="post-date" datatype="html">
+        <source> Postado em <x id="INTERPOLATION" equiv-text="{{ currentPost.date | date:&quot;d &apos;de&apos; MMM &apos;de&apos; y&quot; }}"/> </source>
+        <target> Posted on <x id="INTERPOLATION" equiv-text="{{ currentPost.date | date:&quot;d &apos;de&apos; MMM &apos;de&apos; y&quot; }}"/> </target>
+      </trans-unit>
+      <trans-unit id="post-back-to-articles" datatype="html">
+        <source>Voltar para artigos</source>
+        <target>Back to articles</target>
+      </trans-unit>
+      <trans-unit id="post-not-found-title" datatype="html">
+        <source>Post nao encontrado</source>
+        <target>Post not found</target>
+      </trans-unit>
+      <trans-unit id="post-not-found-message" datatype="html">
+        <source>O artigo que voce tentou abrir nao existe.</source>
+        <target>The article you tried to open does not exist.</target>
+      </trans-unit>
+      <trans-unit id="post-not-found-back" datatype="html">
+        <source>Voltar para artigos</source>
+        <target>Back to articles</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

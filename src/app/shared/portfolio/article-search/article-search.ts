@@ -19,10 +19,22 @@ export class ArticleSearch {
     showAdvancedSearchBar = input<boolean>(false);
     categories = input<string[]>([]);
     activeFilter = input<FilterState | null>(null);
+    readonly orderOptions = [
+        $localize`:@@article-search-order-recent:Mais Recentes`,
+        $localize`:@@article-search-order-oldest:Mais Antigos`,
+    ];
+    readonly timeOptions = [
+        $localize`:@@article-search-time-today:Hoje`,
+        $localize`:@@article-search-time-week:Uma semana atrás`,
+        $localize`:@@article-search-time-month:Um mês atrás`,
+        $localize`:@@article-search-time-year:Um ano atrás`,
+        $localize`:@@article-search-time-all:Sempre`,
+    ];
+    readonly allCategoriesLabel = $localize`:@@article-search-category-all:Todas`;
     selected: Record<string, string> = {
-        relevancia: 'Mais Recentes',
-        tempo: 'Sempre',
-        categoria: 'Todas',
+        relevancia: this.orderOptions[0],
+        tempo: this.timeOptions[this.timeOptions.length - 1],
+        categoria: this.allCategoriesLabel,
     };
 
     constructor(private elRef: ElementRef) {

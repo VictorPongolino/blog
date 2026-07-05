@@ -9,7 +9,7 @@
           }}</span>
         </button>
         <ul class="dropdown-menu" [class.open]="openDropdown === 'relevancia'">
-          @for (item of ['Mais Recentes', 'Mais Antigos']; track item) {
+          @for (item of orderOptions; track item) {
             <li class="dropdown-item" (click)="selectItem('relevancia', item)">
               <span class="radio" [class.checked]="selected['relevancia'] === item"></span>
               {{ item }}
@@ -26,10 +26,7 @@
           }}</span>
         </button>
         <ul class="dropdown-menu" [class.open]="openDropdown === 'tempo'">
-          @for (
-            item of ['Hoje', 'Uma semana atrás', 'Um mês atrás', 'Um ano atrás', 'Sempre'];
-            track item
-          ) {
+          @for (item of timeOptions; track item) {
             <li class="dropdown-item" (click)="selectItem('tempo', item)">
               <span class="radio" [class.checked]="selected['tempo'] === item"></span>
               {{ item }}
@@ -68,7 +65,7 @@
         }}</span>
       </button>
       <ul class="dropdown-menu" [class.open]="openDropdown === 'relevancia'">
-        @for (item of ['Mais Recentes', 'Mais Antigos']; track item) {
+        @for (item of orderOptions; track item) {
           <li class="dropdown-item" (click)="selectItem('relevancia', item)">
             <span class="radio" [class.checked]="selected['relevancia'] === item"></span>
             {{ item }}
