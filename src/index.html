@@ -4,6 +4,32 @@
   <meta charset="utf-8">
   <title>Victor Pongolino</title>
   <base href="/">
+  <script>
+    (function () {
+      var baseHref = document.querySelector('base')?.getAttribute('href') || '/';
+      if (!baseHref.endsWith('/')) {
+        baseHref += '/';
+      }
+
+      var path = window.location.pathname;
+      var rootPath = baseHref.slice(0, -1);
+      var escapedBase = baseHref.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var localePathPattern = new RegExp('^' + escapedBase + '(en|pt)(/|$)');
+
+      if (localePathPattern.test(path)) {
+        return;
+      }
+
+      if (path !== baseHref && path !== rootPath) {
+        return;
+      }
+
+      var userLanguage = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
+      if (userLanguage.startsWith('pt')) {
+        window.location.replace(baseHref + 'pt/');
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -25,7 +25,10 @@
       "i18n": {
         "sourceLocale": "pt",
         "locales": {
-          "en": "src/locale/messages.en.xlf"
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "subPath": ""
+          }
         }
       },
       "architect": {
