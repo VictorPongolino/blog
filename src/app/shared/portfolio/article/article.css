@@ -187,68 +187,7 @@ article:has(.article-body a:focus-visible) .main-image {
     text-justify: inter-word;
 }
 
-.pagination {
-    display: flex;
-    gap: 15px;
-    margin-top: clamp(10px, 2vw, 20px);
-    margin-bottom: clamp(10px, 2vw, 20px);
-    margin-right: clamp(12px, 2vw, 20px);
-    justify-content: flex-end;
-    align-items: center;
-    perspective: 700px;
-}
-
-.pagination a {
-    width: clamp(2rem, 4vw, 3rem);
-    height: clamp(2rem, 4vw, 3rem);
-    font-style: normal;
-    font-weight: bold;
-    font-size: clamp(1rem, 2vw, 1.5rem);
-    color: #fff !important;
-    background-color: #2123a2 !important;
-    text-decoration: none;
-    border-radius: 50%;
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(0) scale(1) rotateX(0deg);
-    transition: transform 200ms ease, box-shadow 220ms ease, background-color 220ms ease;
-    transform-origin: center;
-    box-shadow: 0 0 0 rgba(33, 35, 162, 0.25);
-}
-
-.pagination a:hover,
-.pagination a:focus-visible {
-    transform: translateY(-4px) scale(1.08) rotateX(8deg);
-    box-shadow: 0 10px 18px rgba(33, 35, 162, 0.28);
-}
-
-.pagination a:active {
-    transform: translateY(-1px) scale(0.97);
-}
-
-.pagination a.active {
-    transform: translateY(-2px) scale(1.13);
-    background-color: #0f1178 !important;
-    box-shadow: 0 8px 20px rgba(15, 17, 120, 0.34);
-}
-
-.pagination a:nth-child(odd):hover,
-.pagination a:nth-child(odd):focus-visible {
-    transform: translateY(-5px) scale(1.08) rotate(-4deg);
-}
-
-.pagination a:nth-child(even):hover,
-.pagination a:nth-child(even):focus-visible {
-    transform: translateY(-5px) scale(1.08) rotate(4deg);
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .pagination a {
-        transition: background-color 150ms ease;
-        transform: none;
-    }
 
     .article-title a::after {
         transition: none;
@@ -256,17 +195,6 @@ article:has(.article-body a:focus-visible) .main-image {
 
     .main-image {
         transition: none;
-    }
-
-    .pagination a:hover,
-    .pagination a:focus-visible,
-    .pagination a:active,
-    .pagination a.active,
-    .pagination a:nth-child(odd):hover,
-    .pagination a:nth-child(odd):focus-visible,
-    .pagination a:nth-child(even):hover,
-    .pagination a:nth-child(even):focus-visible {
-        transform: none;
     }
 }
 

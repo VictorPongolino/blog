@@ -62,20 +62,13 @@
         }
     </section>
 
+
     @if (showPagination()) {
-        <nav class="pagination">
-            @for (page of pages(); track page) {
-            <a
-                class="page"
-                [class.active]="page === currentPage()"
-                [routerLink]="[]"
-                [queryParams]="{ page }"
-                (click)="onPaginationClick()"
-            >
-                {{ page }}
-            </a>
-            }
-        </nav>
+        <app-article-pagination
+            [pages]="pages()"
+            [currentPage]="currentPage()"
+            (pageClick)="onPageChange($event)">
+        </app-article-pagination>
     }
     
 </main>

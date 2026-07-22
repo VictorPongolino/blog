@@ -1,19 +1,21 @@
 import { DatePipe } from '@angular/common';
 import { Component, computed, inject, input, signal, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 import { ArticleSearch, FilterState } from '../article-search/article-search';
+import { ArticlePagination } from "../article-pagination/article-pagination";
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [DatePipe, RouterLink, ArticleSearch],
+  imports: [DatePipe, RouterLink, ArticleSearch, ArticlePagination],
   templateUrl: './article.html',
   styleUrl: './article.css',
 })
 export class Article {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly router: Router = inject(Router);
   
   readonly maxItemsPerPage = signal(3);
   readonly articles = input.required<ArticleOutline[]>();
@@ -40,13 +42,12 @@ export class Article {
     this.filter.update(f => ({ ...f, categoria: tag.name }));
   }
 
-  onPaginationClick(): void {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  onPageChange(page: number): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page },
+      queryParamsHandling: 'merge',
+    });
   }
 
   readonly filteredArticles = computed(() => {
