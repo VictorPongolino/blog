@@ -1,5 +1,7 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, signal, inject, effect } from '@angular/core';
+import { RouterLink, Router, NavigationEnd } from '@angular/router';
+import { ScrollTitleService } from '../../services/scroll-title.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +13,35 @@ import { RouterLink } from '@angular/router';
 export class Navbar {
   isMenuOpen = signal(false);
   readonly currentLocale = signal<'en' | 'pt'>(this.detectCurrentLocale());
+  readonly scrollTitleService = inject(ScrollTitleService);
+  readonly isDetailPage = signal(false);
+  private router = inject(Router);
+
+  constructor() {
+    // Track scroll service changes for debugging
+    effect(() => {
+      const title = this.scrollTitleService.currentScrollTitle();
+      const isScrolled = this.scrollTitleService.isScrolled();
+      console.log('[Navbar] Scroll service updated:', { title, isScrolled });
+    });
+
+    // Detect if we're on an article detail page
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        // Check if URL matches /blog/:slug pattern (detail page)
+        // Detail pages: /blog/teste, /blog/teste1, etc.
+        // List page: /blog
+        const urlPath = event.urlAfterRedirects || event.url;
+        const isDetail = /\/blog\/[^/]+$/.test(urlPath);
+        this.isDetailPage.set(isDetail);
+      });
+
+    // Initial check on component init
+    const currentUrl = this.router.url;
+    const isDetail = /\/blog\/[^/]+$/.test(currentUrl);
+    this.isDetailPage.set(isDetail);
+  }
 
   toggleMenu(): void {
     this.isMenuOpen.set(!this.isMenuOpen());

@@ -7,6 +7,7 @@ import { map } from 'rxjs';
 import articlesData from '../../../../artigos/articles.json';
 import profileData from '../../../../artigos/profile.json';
 import { BlogLayout } from '../../layout/blog-layout/blog-layout';
+import { ScrollTitleDirective } from '../../directives/scroll-title.directive';
 
 interface Author {
   name: string;
@@ -34,7 +35,7 @@ interface RecommendedArticle {
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [BlogLayout, DatePipe, RouterLink],
+  imports: [BlogLayout, DatePipe, RouterLink, ScrollTitleDirective],
   templateUrl: './post.html',
   styleUrl: './post.css',
   encapsulation: ViewEncapsulation.None,

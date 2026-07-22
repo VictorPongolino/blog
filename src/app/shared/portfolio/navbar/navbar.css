@@ -18,6 +18,52 @@
 section {
     background: var(--background-color);
     min-height: clamp(2rem, 10vw, 5rem);
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+section.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.sticky-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 15;
+    background: var(--background-color);
+}
+
+.sticky-title.visible {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 15;
+}
+
+.sticky-title h2 {
+    margin: 0;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-color);
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 nav {

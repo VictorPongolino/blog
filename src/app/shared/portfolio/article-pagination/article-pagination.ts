@@ -15,9 +15,9 @@ export class ArticlePagination {
 
   readonly firstPage = computed(() => this.pages().at(0));
   readonly lastPage = computed(() => this.pages().at(-1));
-  readonly visiblePages = computed(() => this.pages().slice(0, 3));
-  readonly showEllipsis = computed(() => this.pages().length > 4);
-  readonly hasLastPage = computed(() => this.pages().length > 3);
+  readonly visiblePages = computed(() => this.pages().slice(0, 5));
+  readonly showEllipsis = computed(() => this.pages().length > 5);
+  readonly hasLastPage = computed(() => this.pages().length > 4);
   
   readonly showFirstPage = computed(() => 
     this.firstPage() !== undefined && !this.visiblePages().includes(this.firstPage()!)
