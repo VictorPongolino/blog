@@ -34,13 +34,13 @@
 				<div class="post-markdown" [innerHTML]="postBodyHtml()"></div>
 			</section>
 
-			<a class="back-link" [routerLink]="['/blog']" i18n="@@post-back-to-articles">Voltar para artigos</a>
+			<a class="back-link" (click)="backToArticles()" i18n="@@post-back-to-articles">Voltar para artigos</a>
 		</article>
 	} @else {
 		<section class="post-not-found">
 			<h1 i18n="@@post-not-found-title">Post nao encontrado</h1>
 			<p i18n="@@post-not-found-message">O artigo que voce tentou abrir nao existe.</p>
-			<a [routerLink]="['/blog']" i18n="@@post-not-found-back">Voltar para artigos</a>
+			<a (click)="backToArticles()" i18n="@@post-not-found-back">Voltar para artigos</a>
 		</section>
 	}
 </app-blog-layout>

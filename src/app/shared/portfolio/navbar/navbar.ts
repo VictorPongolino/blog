@@ -22,7 +22,10 @@ export class Navbar {
   private readonly INTRO_SECTION_THRESHOLD = 350;
   
   readonly shouldFixNavbar = computed(
-    () => this.isDetailPage() && this.scrollPosition() < this.INTRO_SECTION_THRESHOLD
+    () => this.isDetailPage() && (
+      this.scrollPosition() < this.INTRO_SECTION_THRESHOLD ||
+      this.scrollTitleService.isScrolled()
+    )
   );
   
   private router = inject(Router);

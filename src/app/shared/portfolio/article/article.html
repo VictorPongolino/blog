@@ -29,7 +29,9 @@
 
 
                     @if (article.picture) {
-                        <img class="main-image" [src]="article.picture" [alt]="article.title" i18n-alt="@@article-main-image-alt" />
+                        <a class="main-image-link" (click)="navigateToPost(article.slug)">
+                            <img class="main-image" [src]="article.picture" [alt]="article.title" i18n-alt="@@article-main-image-alt" />
+                        </a>
                     }
 
                     @if ((article.tags?.length ?? 0) > 0) {
@@ -41,17 +43,14 @@
                     }
 
                     <h2 class="article-title">
-                        <a [routerLink]="['/blog', article.slug]">
+                        <a (click)="navigateToPost(article.slug)">
                             {{article.title}}
                         </a>
                     </h2>
                 </header>
 
                     <div class="article-body">
-                        <a [routerLink]="['/blog', article.slug]">
-
-                            <p class="article-content">{{article.description}}</p>
-                        </a>
+                        <p class="article-content">{{article.description}}</p>
                     </div>
 
             </article>

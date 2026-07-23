@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, ViewEncapsulation, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { marked } from 'marked';
 import { map } from 'rxjs';
 import articlesData from '../../../../artigos/articles.json';
@@ -43,6 +43,12 @@ interface RecommendedArticle {
 })
 export class Post {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly router: Router = inject(Router);
+
+  backToArticles(): void {
+    window.scrollTo({ top: 0 });
+    this.router.navigate(['/blog']);
+  }
 
   private readonly articles: ArticlePost[] = articlesData.map(article => ({
     ...article,

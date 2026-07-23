@@ -50,6 +50,11 @@ export class Article {
     });
   }
 
+  navigateToPost(slug: string): void {
+    window.scrollTo({ top: 0 });
+    this.router.navigate(['/blog', slug]);
+  }
+
   readonly filteredArticles = computed(() => {
     const { order, tempo, categoria } = this.filter();
     const term = this.searchQuery().trim().toLowerCase();

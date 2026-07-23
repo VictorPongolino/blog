@@ -121,6 +121,11 @@ header:has(.main-image) .author {
     transform: scaleX(1);
 }
 
+.article-title a:hover,
+.article-title a:focus-visible {
+    cursor: pointer;
+}
+
 article:has(.article-body a:hover) .article-title a::after,
 article:has(.article-body a:focus-visible) .article-title a::after {
     transform: scaleX(1);
@@ -155,8 +160,7 @@ li.tag a:focus-visible {
     text-decoration: underline;
 }
 
-.article-title a,
-.article-body a {
+.article-title a {
     text-decoration: none;
     color: black;
 }
@@ -169,10 +173,15 @@ li.tag a:focus-visible {
     transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms ease;
 }
 
+.main-image-link {
+    display: block;
+    cursor: pointer;
+}
+
 article:has(.article-title a:hover) .main-image,
 article:has(.article-title a:focus-visible) .main-image,
-article:has(.article-body a:hover) .main-image,
-article:has(.article-body a:focus-visible) .main-image {
+article:has(.main-image-link:hover) .main-image,
+article:has(.main-image-link:focus-visible) .main-image {
     transform: translateY(-2px) scale(1.02);
     filter: saturate(1.08) contrast(1.03);
 }
