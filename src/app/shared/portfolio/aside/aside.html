@@ -1,8 +1,8 @@
-<aside>
+<aside [class.navbar-fixed]="navbarFixed">
     <div class="bio">
         <div class="profile">
             <img [src]="profile.avatar" [alt]="profile.fullName">
-            <h4>{{ profile.fullName }}</h4>
+            <h4 class="profile-name">{{ profile.fullName }}</h4>
             <p>{{ profile.title }}</p>
         </div>
 

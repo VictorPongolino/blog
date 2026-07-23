@@ -3,6 +3,11 @@ aside {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    scroll-margin-top: clamp(60px, 12vw, 100px);
+}
+
+aside.navbar-fixed {
+    padding-top: clamp(60px, 12vw, 100px);
 }
 
 .bio {
@@ -11,7 +16,7 @@ aside {
     background-color: #ffffff !important;
     box-sizing: border-box;
     border-radius: 5px;
-
+    overflow: hidden;
 }
 
 .profile {
@@ -20,12 +25,14 @@ aside {
     justify-content: center;
     align-items: center;
     padding-top: 50px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .profile img {
     border-radius: 50%;
-    width: clamp(40px, 20vw, 110px);
-    height: clamp(40px, 20vw, 110px);
+    width: clamp(30px, 15vw, 80px);
+    height: clamp(30px, 15vw, 80px);
     border: 1px solid black;
     margin-bottom: 15px;
     object-fit: cover;
@@ -37,8 +44,21 @@ aside {
     margin-bottom: 8px;
 }
 
+.profile-name {
+    white-space: nowrap;
+    padding-inline: clamp(0.5rem, 5vw, 2rem);
+    width: clamp(200px, 95%, 340px);
+    font-size: clamp(6px, 1vw, 10px);
+    margin: 0;
+    text-align: center;
+}
+
+.profile h4.profile-name {
+    font-size: clamp(14px, 2vw, 20px) !important;
+}
+
 .profile p {
-    font-size: clamp(5px, 2vw, 18px);
+    font-size: clamp(10px, 1.5vw, 16px);
 }
 
 .searchbar {

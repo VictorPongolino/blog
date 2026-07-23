@@ -21,6 +21,7 @@ interface ArticlePost {
   picture?: string;
   thumbnail?: string;
   tags?: { slug: string; name: string }[];
+  subtitle?: string;
   description: string;
   body?: string;
   date: Date;

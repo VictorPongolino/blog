@@ -2,29 +2,32 @@
 	@if (post(); as currentPost) {
 		<article class="post-card">
 			<header class="post-header">
-				<div class="author-row">
-					<img class="avatar" [src]="currentPost.author.avatar" [alt]="currentPost.author.name" />
+				@if ((currentPost.tags?.length ?? 0) > 0) {
+					<ul class="tags">
+						@for (tag of currentPost.tags ?? []; track tag) {
+							<li><a [routerLink]="['/blog', 'tag', tag.slug]">{{ tag.name }}</a></li>
+						}
+					</ul>
+				}
+
+				<div class="post-brief">
+					<h1>{{ currentPost.title }}</h1>
+					@if (currentPost.subtitle) {
+						<p>{{ currentPost.subtitle }}</p>
+					}
+					
 					<div class="author-info">
-						<h2>{{ currentPost.author.name }}</h2>
+						<h2>By {{ currentPost.author.name }}</h2>
 						<time [attr.datetime]="currentPost.date.toISOString()" i18n="@@post-date">
 							Postado em {{ currentPost.date | date:"d 'de' MMM 'de' y" }}
 						</time>
 					</div>
 				</div>
+				
 
 				@if (currentPost.picture) {
 					<img class="main-image" [src]="currentPost.picture" [alt]="currentPost.title" />
 				}
-
-				@if ((currentPost.tags?.length ?? 0) > 0) {
-					<ul class="tags">
-						@for (tag of currentPost.tags ?? []; track tag) {
-							<li class="tag"><a [routerLink]="['/blog', 'tag', tag.slug]">{{ tag.name }}</a></li>
-						}
-					</ul>
-				}
-
-				<h1>{{ currentPost.title }}</h1>
 			</header>
 
 			<section class="post-content">

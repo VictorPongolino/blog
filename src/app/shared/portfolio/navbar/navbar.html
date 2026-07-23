@@ -1,4 +1,4 @@
-<section [class.fixed]="isDetailPage()">
+<section [class.fixed]="shouldFixNavbar()">
 
     <div class="sticky-title" 
          [class.visible]="scrollTitleService.isScrolled() && scrollTitleService.currentScrollTitle()">

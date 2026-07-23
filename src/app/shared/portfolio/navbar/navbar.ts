@@ -1,4 +1,4 @@
-import { Component, signal, inject, effect } from '@angular/core';
+import { Component, signal, inject, effect, computed, HostListener } from '@angular/core';
 import { RouterLink, Router, NavigationEnd } from '@angular/router';
 import { ScrollTitleService } from '../../services/scroll-title.service';
 import { filter } from 'rxjs';
@@ -15,6 +15,16 @@ export class Navbar {
   readonly currentLocale = signal<'en' | 'pt'>(this.detectCurrentLocale());
   readonly scrollTitleService = inject(ScrollTitleService);
   readonly isDetailPage = signal(false);
+  readonly scrollPosition = signal(0);
+  
+  // Threshold (px) after which navbar should stop being fixed on detail pages
+  // This allows the intro section (author info, image) to be read without navbar overlap
+  private readonly INTRO_SECTION_THRESHOLD = 350;
+  
+  readonly shouldFixNavbar = computed(
+    () => this.isDetailPage() && this.scrollPosition() < this.INTRO_SECTION_THRESHOLD
+  );
+  
   private router = inject(Router);
 
   constructor() {
@@ -35,12 +45,19 @@ export class Navbar {
         const urlPath = event.urlAfterRedirects || event.url;
         const isDetail = /\/blog\/[^/]+$/.test(urlPath);
         this.isDetailPage.set(isDetail);
+        // Reset scroll position when navigating to a new page
+        this.scrollPosition.set(0);
       });
 
     // Initial check on component init
     const currentUrl = this.router.url;
     const isDetail = /\/blog\/[^/]+$/.test(currentUrl);
     this.isDetailPage.set(isDetail);
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.scrollPosition.set(window.scrollY);
   }
 
   toggleMenu(): void {

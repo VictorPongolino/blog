@@ -2,33 +2,22 @@
 	background-color: #ffffff;
 	border-radius: 8px;
 	padding: clamp(12px, 2vw, 24px);
-	margin-top: clamp(8px, 1.5vw, 16px);
+	margin-top: clamp(60px, 12vw, 100px);
+	scroll-margin-top: clamp(60px, 12vw, 100px);
 }
 
-.author-row {
+.author-info {
 	display: flex;
-	align-items: center;
-	gap: 12px;
-}
-
-.avatar {
-	width: clamp(52px, 8vw, 68px);
-	height: clamp(52px, 8vw, 68px);
-	border-radius: 50%;
-	border: 1px solid #ccc;
-	object-fit: cover;
+	flex-direction: row;
+	gap: 10px;
 }
 
 .author-info h2 {
-	margin: 0;
-	font-size: clamp(0.95rem, 1.4vw, 1.2rem);
-	font-weight: 700;
+	font-size: clamp(0.62rem, 0.9vw, 0.9rem);
 }
 
-.author-info time {
-	display: block;
-	margin-top: clamp(2px, 0.5vw, 8px);
-	font-size: clamp(0.62rem, 0.9vw, 0.9rem);
+.author-info h2 {
+	font-weight: 700;
 }
 
 .main-image {
@@ -40,26 +29,58 @@
 	border-radius: 8px;
 }
 
-.tags {
+.post-brief {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: 10px;
-	list-style: none;
-	margin: clamp(10px, 1.4vw, 16px) 0 0;
-	padding: 0;
 }
 
-.tag {
-	background-color: #dab048;
-	border-radius: 20px;
-	padding: clamp(2px, 0.7vw, 6px) clamp(6px, 1.2vw, 10px);
-	font-size: clamp(0.72rem, 1vw, 0.9rem);
+.post-brief p {
+	color: #717171;
 }
 
 .post-header h1 {
 	margin-top: clamp(10px, 1.5vw, 16px);
 	font-size: clamp(1.3rem, 2.2vw, 2rem);
 	font-weight: 700;
+}
+
+.author-info *:not(:last-child)::after {
+	content: "•";
+	margin-left: 10px;
+	color: #080808;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+/* TAGS */
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    margin: clamp(10px, 1.4vw, 16px) 0 0;
+    padding: 0;
+}
+
+.tags a {
+    color: #1a6f93;
+	font-weight: 700;
+    text-decoration: none;
+	text-transform: uppercase;
+    border-radius: 20px;
+    font-size: clamp(0.72rem, 1vw, 0.9rem);
+}
+
+.tags li:not(:last-child)::after {
+    content: "•";
+    margin-left: 10px;
+    color: #777777;
+    font-size: 15px;
+    vertical-align: middle;
 }
 
 .post-content {
