@@ -97,7 +97,6 @@ export class ArticlePagination {
 
     if (this.selectedPage >= firstPage && this.selectedPage <= lastPage) {
       this.onPageClick(this.selectedPage);
-      this.selectedPage = null;
     }
   }
 
@@ -107,6 +106,8 @@ export class ArticlePagination {
     if (typeof window === 'undefined') {
       return;
     }
+
+    this.selectedPage = null;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
