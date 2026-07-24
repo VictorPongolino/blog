@@ -35,6 +35,29 @@
             <span class="dots" aria-hidden="true">...</span>
         }
 
+        <div class="page-go-to-group">
+            <form (ngSubmit)="onPageSubmit()">
+                <input 
+                    name="page"
+                    type="number" 
+                    class="page-input no-spin"
+                    [min]="minPage()" 
+                    [max]="maxPage()"
+                    step="1"
+                    [(ngModel)]="selectedPage"
+                    (beforeinput)="onPageBeforeInput($event)"
+                    (paste)="onPagePaste($event)"
+                    (input)="onPageInput($event)"
+                >
+
+                @if (hasSelectedPage()) {
+                    <button type="submit">Go</button>
+                }
+            </form>
+        </div>
+        
+        
+
         @if (showLastPage()) {
             <button 
                 class="page-number"

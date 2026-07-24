@@ -1,4 +1,4 @@
-
+/* Base Layout Containers */
 .pagination-card {
     display: flex;
     justify-content: flex-end;
@@ -10,9 +10,137 @@
 
 .pagination-numbers {
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 
+/* Page Button Base Style */
+.page-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    color: #635bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-number:hover {
+    background-color: #e2e1fd;
+    transform: scale(1.05);
+}
+
+.page-number.active {
+    background-color: #635bff;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(99, 91, 255, 0.3);
+}
+
+.page-number.active:hover {
+    background-color: #4f47d9;
+    transform: scale(1.08);
+}
+
+/* Dots / Ellipsis */
+.dots {
+    color: #a4a1fb;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 0 4px;
+}
+/* Hide native number input spinners */
+/* Hide native number input spinners */
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no-spin {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Page Input & Go Group Styling */
+.page-go-to-group form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+/* Input Styling */
+.page-input {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid #dcd9fe;
+    border-radius: 12px;
+    background-color: #f8f8ff;
+    color: #635bff;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    outline: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    transition:
+        border-color .2s ease,
+        background-color .2s ease,
+        box-shadow .2s ease,
+        transform .15s ease;
+}
+
+.page-input:hover {
+    border-color: #b7b4ff;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(99, 91, 255, 0.08);
+}
+
+.page-input:focus {
+    border-color: #635bff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(99, 91, 255, 0.15);
+}
+
+.page-input:focus-visible {
+    outline: none;
+}
+
+.page-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.page-input.invalid {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+/* "Go" Submit Button Styling */
+.page-go-to-group button[type="submit"] {
+    background: transparent;
+    border: none;
+    color: #635bff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 4px;
+    transition: all 0.2s ease;
+}
+
+.page-go-to-group button[type="submit"]:hover {
+    color: #4f47d9;
+    transform: scale(1.05);
+}
+
+/* Back / Next Navigation Buttons */
 .pagination-nav {
     color: black;
     display: flex;
@@ -39,120 +167,4 @@
 
 .pagination-nav.next:hover {
     transform: translateX(2px);
-}
-
-.pagination-nav:disabled {
-    color: inherit;
-    cursor: not-allowed;
-    opacity: 1;
-}
-
-.pagination-nav:disabled:hover {
-    color: black;
-    transform: none;
-}
-
-.page-number {
-    width: 28px;
-    height: 32px;
-    border-radius: 10px;
-    color: #635bff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.dots {
-    color: #a4a1fb;
-    font-weight: bold;
-    letter-spacing: 2px;
-    padding: 0 4px;
-}
-
-.page-number:hover {
-    background-color: #e2e1fd;
-    transform: scale(1.05);
-}
-
-.page-number.active {
-    background-color: #635bff;
-    color: #ffffff;
-    box-shadow: 0 2px 8px rgba(99, 91, 255, 0.3);
-}
-
-.page-number.active:hover {
-    background-color: #4f47d9;
-    transform: scale(1.08);
-}
-
-/* Tablet responsive */
-@media (max-width: 768px) {
-    .pagination-card {
-        gap: 10px;
-        margin: 10px 5px 10px 0;
-    }
-
-    .pagination-nav {
-        padding: 6px 2px;
-        font-size: 14px;
-    }
-
-    .page-number {
-        width: 24px;
-        height: 28px;
-        font-size: 13px;
-    }
-
-    .dots {
-        font-size: 12px;
-        padding: 0 2px;
-    }
-}
-
-/* Mobile responsive */
-@media (max-width: 480px) {
-    .pagination-card {
-        gap: 8px;
-        margin: 10px 2px 10px 0;
-        width: 100%;
-    }
-
-    .pagination-nav {
-        padding: 4px 2px;
-        font-size: 13px;
-        flex: 1;
-        justify-content: center;
-        min-width: 50px;
-    }
-
-    .page-number {
-        width: 20px;
-        height: 24px;
-        font-size: 12px;
-        border-radius: 6px;
-    }
-
-    .dots {
-        display: none;
-    }
-}
-
-/* Prefers reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .pagination-nav,
-    .page-number {
-        transition: background-color 150ms ease, color 150ms ease;
-    }
-
-    .pagination-nav:hover,
-    .page-number:hover,
-    .page-number.active:hover {
-        transform: none;
-    }
 }
