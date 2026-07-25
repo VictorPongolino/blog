@@ -126,6 +126,10 @@
         <source>Voltar para o topo</source>
         <target>Back to top</target>
       </trans-unit>
+      <trans-unit id="post-go-back-top" datatype="html">
+        <source>Voltar ao Top</source>
+        <target>Back to top</target>
+      </trans-unit>
       <trans-unit id="post-not-found-title" datatype="html">
         <source>Post nao encontrado</source>
         <target>Post not found</target>

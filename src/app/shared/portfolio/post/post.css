@@ -181,6 +181,13 @@
 }
 
 .go-back-top {
+	-webkit-user-select: none; /* Safari, Chrome, and iOS */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* Internet Explorer/Edge */
+	user-select: none;         /* Standard syntax (Chrome, Edge, Opera) */
+	appearance: none;
+	font: inherit;
+
 	position: fixed;
 	display: flex;
 	padding: 10px;

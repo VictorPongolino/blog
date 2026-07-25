@@ -37,17 +37,19 @@
 			<a class="back-link" (click)="backToArticles()" i18n="@@post-back-to-articles">Voltar para artigos</a>
 
 			@if (showGoBackTop()) {
-				<div class="go-back-top">
-					Voltar ao Top
+				<button
+					type="button"
+					class="go-back-top"
+					(click)="scrollToTop()"
+					i18n-aria-label="@@post-go-back-top-aria"
+					aria-label="Voltar para o topo"
+				>
+					<span i18n="@@post-go-back-top">Voltar ao Topo</span>
 					<span
 						class="material-symbols-outlined"
-						role="button"
-						tabindex="0"
-						(click)="scrollToTop()"
-						i18n-aria-label="@@post-go-back-top-aria"
-						aria-label="Voltar para o topo"
+						aria-hidden="true"
 					>arrow_upward</span>
-				</div>
+				</button>
 			}
 		</article>
 	} @else {
