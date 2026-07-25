@@ -17,16 +17,16 @@ export class Article {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly router: Router = inject(Router);
   
-  readonly maxItemsPerPage = signal(3);
+  readonly maxItemsPerPage = signal(10);
   readonly articles = input.required<ArticleOutline[]>();
   readonly showSearchControl = input(false);
   readonly searchQuery = input('');
 
   readonly currentPage = toSignal(this.route.queryParamMap.pipe(map(params => Number(params.get('page') || 1))), { initialValue: 1 });
-  readonly filter = signal<FilterState>({ order: 'Mais Recentes', tempo: 'Sempre', categoria: 'Todas' });
+  readonly filter = signal<FilterState>({ order: 'Most Recent', tempo: 'Always', categoria: 'All' });
   readonly categories = computed(() => {
     const uniqueCategories = new Set<string>();
-    uniqueCategories.add('Todas');
+    uniqueCategories.add('All');
     this.articles().forEach(article => {
       article.tags?.forEach(tag => uniqueCategories.add(tag.name));
     });
@@ -67,7 +67,7 @@ export class Article {
         return { article: a, matches };
       })
       .filter(({ article: a }) => {
-        if (categoria !== 'Todas' && !a.tags?.some(tag => tag.name.toLowerCase() === categoria.toLowerCase())) {
+        if (categoria !== 'All' && !a.tags?.some(tag => tag.name.toLowerCase() === categoria.toLowerCase())) {
           return false;
         }
         return true;
@@ -76,17 +76,17 @@ export class Article {
         if (term && matches === 0) return false;
         const date = new Date(a.date);
         switch (tempo) {
-          case 'Hoje': return date.toDateString() === now.toDateString();
-          case 'Uma semana atrás': return (now.getTime() - date.getTime()) <= 7 * 24 * 60 * 60 * 1000;
-          case 'Um mês atrás': return (now.getTime() - date.getTime()) <= 30 * 24 * 60 * 60 * 1000;
-          case 'Um ano atrás': return (now.getTime() - date.getTime()) <= 365 * 24 * 60 * 60 * 1000;
+          case 'Today': return date.toDateString() === now.toDateString();
+          case 'One Week Ago': return (now.getTime() - date.getTime()) <= 7 * 24 * 60 * 60 * 1000;
+          case 'One Month Ago': return (now.getTime() - date.getTime()) <= 30 * 24 * 60 * 60 * 1000;
+          case 'One Year Ago': return (now.getTime() - date.getTime()) <= 365 * 24 * 60 * 60 * 1000;
           default: return true;
         }
       })
       .sort((a, b) => {
         if (term && a.matches !== b.matches) return b.matches - a.matches;
         const diff = new Date(b.article.date).getTime() - new Date(a.article.date).getTime();
-        return order === 'Mais Antigos' ? -diff : diff;
+        return order === 'Oldest' ? -diff : diff;
       });
 
     return scored.map(s => s.article);
