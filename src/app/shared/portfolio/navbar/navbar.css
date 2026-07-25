@@ -85,6 +85,54 @@ nav {
 }
 
 nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+nav a .disabled {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: red;
+    font-weight: bold;
+    font-size: clamp(0.4rem, 2vw, 0.5rem);
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+nav a:has(.disabled) {
+    cursor: not-allowed;
+}
+
+nav a:has(.disabled)::after {
+    content: "\26D4  Feature under development";
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    right: 0;
+    font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+    font-weight: 600;
+    color: #ffd9d9;
+    background: rgba(176, 36, 36, 0.95);
+    border: 1px solid rgba(255, 140, 140, 0.55);
+    border-radius: 999px;
+    padding: 0.15rem 0.45rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+nav a:has(.disabled):hover::after,
+nav a:has(.disabled):focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+nav a span {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
@@ -92,6 +140,7 @@ nav a {
     transition: 0.2s;
     padding: 0.5rem 1rem;
     border-radius: 8px;
+    opacity: 0.3;
 }
 
 nav a:hover {
