@@ -1,9 +1,9 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, DOCUMENT } from '@angular/common';
 import { Component, ElementRef, ViewEncapsulation, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink, convertToParamMap } from '@angular/router';
 import { marked } from 'marked';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, distinctUntilChanged, fromEvent, map, Observable, of, startWith, switchMap } from 'rxjs';
 import { BlogLayout } from '../../layout/blog-layout/blog-layout';
 import { ScrollTitleDirective } from '../../directives/scroll-title.directive';
 import {
@@ -21,7 +21,10 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class Post {
+
   private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly document = inject(DOCUMENT);
+  private readonly windowRef = this.document.defaultView;
   private readonly route = inject(ActivatedRoute, { optional: true });
   private readonly router: Router = inject(Router);
   private readonly postService = inject(PostService);
@@ -114,6 +117,21 @@ export class Post {
   readonly recommended = computed<RecommendedArticle[]>(() =>
     this.postService.getRecommended(this.slug()),
   );
+
+  readonly showGoBackTop = toSignal(
+    this.windowRef
+      ? fromEvent(this.windowRef, 'scroll').pipe(
+        startWith(null),
+        map(() => (this.windowRef?.scrollY ?? 0) > 220),
+        distinctUntilChanged(),
+      )
+      : of(false),
+    { initialValue: false },
+  );
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   getBody(slug: string): Observable<ArticleBody> {
     return this.postService.getBody(slug);

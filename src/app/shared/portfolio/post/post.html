@@ -35,6 +35,20 @@
 			</section>
 
 			<a class="back-link" (click)="backToArticles()" i18n="@@post-back-to-articles">Voltar para artigos</a>
+
+			@if (showGoBackTop()) {
+				<div class="go-back-top">
+					Voltar ao Top
+					<span
+						class="material-symbols-outlined"
+						role="button"
+						tabindex="0"
+						(click)="scrollToTop()"
+						i18n-aria-label="@@post-go-back-top-aria"
+						aria-label="Voltar para o topo"
+					>arrow_upward</span>
+				</div>
+			}
 		</article>
 	} @else {
 		<section class="post-not-found">

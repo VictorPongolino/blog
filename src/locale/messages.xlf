@@ -212,6 +212,13 @@
           <context context-type="linenumber">34,37</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="post-go-back-top-aria" datatype="html">
+        <source>Voltar para o topo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/portfolio/post/post.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="post-not-found-title" datatype="html">
         <source>Post nao encontrado</source>
         <context-group purpose="location">

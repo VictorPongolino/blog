@@ -122,6 +122,10 @@
         <source>Voltar para artigos</source>
         <target>Back to articles</target>
       </trans-unit>
+      <trans-unit id="post-go-back-top-aria" datatype="html">
+        <source>Voltar para o topo</source>
+        <target>Back to top</target>
+      </trans-unit>
       <trans-unit id="post-not-found-title" datatype="html">
         <source>Post nao encontrado</source>
         <target>Post not found</target>

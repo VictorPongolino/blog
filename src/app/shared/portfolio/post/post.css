@@ -179,3 +179,18 @@
 	text-decoration: none;
 	font-weight: 600;
 }
+
+.go-back-top {
+	position: fixed;
+	display: flex;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+	bottom: 20px;
+	right: 20px;
+	border: solid 1px #2123a2;
+	border-radius: 50px;
+	background-color: wheat;
+	cursor: pointer;
+	gap: 5px;
+}
