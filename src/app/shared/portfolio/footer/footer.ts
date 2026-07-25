@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ArticleMetadataService, ProfileMetadata } from '../../services/article-metadata.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,4 +9,8 @@ import { RouterLink } from '@angular/router';
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
-export class Footer {}
+export class Footer {
+  private readonly articleMetadataService = inject(ArticleMetadataService);
+
+  readonly profile: ProfileMetadata = this.articleMetadataService.getProfile();
+}

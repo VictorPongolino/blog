@@ -67,8 +67,8 @@
         <target>See also</target>
       </trans-unit>
       <trans-unit id="footer-description" datatype="html">
-        <source>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem veniam maiores quasi consequatur similique id culpa omnis temporibus consequuntur explicabo. Blanditiis aliquid tempore quidem officia! Iure atque ullam officiis eum?</source>
-        <target>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem veniam maiores quasi consequatur similique id culpa omnis temporibus consequuntur explicabo. Blanditiis aliquid tempore quidem officia! Iure atque ullam officiis eum?</target>
+        <source>I am a Software Engineer passionate about software development and the broader technology landscape. I enjoy studying new ideas, building reliable systems, and sharing practical knowledge with other developers through clear, experience-driven content on backend engineering, Java, Spring, reactive systems, architecture, and production-ready code.</source>
+        <target>I am a Software Engineer passionate about software development and the broader technology landscape. I enjoy studying new ideas, building reliable systems, and sharing practical knowledge with other developers through clear, experience-driven content on backend engineering, Java, Spring, reactive systems, architecture, and production-ready code.</target>
       </trans-unit>
       <trans-unit id="footer-social-linkedin-aria" datatype="html">
         <source>LinkedIn</source>

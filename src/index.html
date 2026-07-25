@@ -5,6 +5,20 @@
   <title>Victor Pongolino</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Restore deep-link routes redirected through /?/<path> by GitHub Pages 404 fallback.
+    (function (location) {
+      if (location.search.startsWith("?/")) {
+        const query = location.search
+          .slice(1)
+          .split("&")
+          .map((part) => part.replace(/~and~/g, "&"))
+          .join("?");
+
+        window.history.replaceState(null, "", location.pathname + query.slice(1) + location.hash);
+      }
+    })(window.location);
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close,search">  <link rel="icon" type="image/x-icon" href="favicon.ico">
