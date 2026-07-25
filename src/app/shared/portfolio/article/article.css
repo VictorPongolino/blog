@@ -5,6 +5,10 @@ main {
     justify-content: space-between;
 }
 
+main.no-pagination {
+    margin-bottom: clamp(24px, 4vw, 48px);
+}
+
 app-article-search {
     display: block;
     margin-top: clamp(10px, 2vw, 24px);

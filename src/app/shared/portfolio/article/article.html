@@ -1,4 +1,4 @@
-<main>
+<main [class.no-pagination]="!showPagination()">
     <app-article-search 
         [showAdvancedSearchBar]="showSearchControl()" 
         [categories]="categories()"
