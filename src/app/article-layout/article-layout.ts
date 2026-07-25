@@ -1,16 +1,15 @@
-import { Component, computed, signal } from '@angular/core';
-import articlesData from '../../artigos/articles.json';
-import profileData from '../../artigos/profile.json';
+import { Component, inject, signal } from '@angular/core';
 import { Article } from '../shared/portfolio/article/article';
 import { ArticleOutline } from '../shared/portfolio/article/article';
 import { BlogLayout } from '../shared/layout/blog-layout/blog-layout';
+import { ArticleMetadataService } from '../shared/services/article-metadata.service';
 
 interface ArticleContent extends ArticleOutline {
   thumbnail?: string;
 }
 
 interface RecommendedArticle {
-  image?: string;
+  image: string;
   title: string;
   slug: string;
 }
@@ -29,20 +28,26 @@ interface SearchedContent {
   styleUrl: './article-layout.css',
 })
 export class ArticleLayout {
-  readonly articles: ArticleContent[] = articlesData.map(article => ({
+  private readonly articleMetadataService = inject(ArticleMetadataService);
+  private readonly profile = this.articleMetadataService.getProfile();
+
+  readonly articles: ArticleContent[] = this.articleMetadataService.getArticles().map(article => ({
     ...article,
     author: {
-      name: profileData.fullName,
-      avatar: profileData.avatar
+      name: this.profile.fullName,
+      avatar: this.profile.avatar,
     },
     date: new Date(article.date),
   }));
 
-  readonly recommended: RecommendedArticle[] = this.articles.slice(0, 5).map(article => ({
-    image: article.thumbnail ?? article.picture,
-    title: article.title,
-    slug: article.slug,
-  }));
+  readonly recommended: RecommendedArticle[] = this.articles
+    .map((article) => ({
+      image: article.thumbnail ?? article.picture ?? '',
+      title: article.title,
+      slug: article.slug,
+    }))
+    .filter((article) => article.image.length > 0)
+    .slice(0, 5);
 
   readonly searchedContent = signal<SearchedContent>({});
   readonly showSearchControl = signal(false);

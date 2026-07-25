@@ -62,7 +62,7 @@ export class Article {
 
     const scored = this.articles()
       .map(a => {
-        const text = `${a.author.name} ${a.title} ${a.description} ${a.body ?? ''}`.toLowerCase();
+        const text = `${a.author.name} ${a.title} ${a.description}`.toLowerCase();
         const matches = term ? (text.match(new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'))?.length ?? 0) : 0;
         return { article: a, matches };
       })
@@ -124,7 +124,6 @@ export interface ArticleOutline {
   picture?: string;
   tags?: Tags[];
   description: string;
-  body?: string;
   date: Date;
 }
 

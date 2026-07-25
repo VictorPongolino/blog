@@ -36,11 +36,11 @@
         </div>
     </div>
     
-    @if(recommended.length > 0) {
+    @if(displayedRecommended.length > 0) {
         <div class="suggested-articles"> 
             <h4 i18n="@@aside-see-also">Veja também</h4>
             <ul>
-                @for(recommended_posts of recommended; track recommended_posts.slug) {
+                @for(recommended_posts of displayedRecommended; track recommended_posts.slug) {
                     <li class="suggested-article-item">
                         <a [routerLink]="['/blog', recommended_posts.slug]">
                             <img src="{{ recommended_posts.image }}" alt="{{ recommended_posts.title }}">

@@ -4,7 +4,7 @@ import { Footer } from '../../portfolio/footer/footer';
 import { Navbar } from '../../portfolio/navbar/navbar';
 
 interface RecommendedArticle {
-  image?: string;
+  image: string;
   title: string;
   slug: string;
 }

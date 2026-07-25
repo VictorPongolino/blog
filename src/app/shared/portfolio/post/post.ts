@@ -1,37 +1,16 @@
 import { DatePipe } from '@angular/common';
-import { Component, ViewEncapsulation, computed, inject } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterLink, convertToParamMap } from '@angular/router';
 import { marked } from 'marked';
-import { map } from 'rxjs';
-import articlesData from '../../../../artigos/articles.json';
-import profileData from '../../../../artigos/profile.json';
+import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { BlogLayout } from '../../layout/blog-layout/blog-layout';
 import { ScrollTitleDirective } from '../../directives/scroll-title.directive';
-
-interface Author {
-  name: string;
-  avatar: string;
-}
-
-interface ArticlePost {
-  author: Author;
-  title: string;
-  slug: string;
-  picture?: string;
-  thumbnail?: string;
-  tags?: { slug: string; name: string }[];
-  subtitle?: string;
-  description: string;
-  body?: string;
-  date: Date;
-}
-
-interface RecommendedArticle {
-  image?: string;
-  title: string;
-  slug: string;
-}
+import {
+  ArticleBody,
+  PostService,
+  RecommendedArticle,
+} from '../../services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -42,42 +21,101 @@ interface RecommendedArticle {
   encapsulation: ViewEncapsulation.None,
 })
 export class Post {
-  private readonly route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly route = inject(ActivatedRoute, { optional: true });
   private readonly router: Router = inject(Router);
+  private readonly postService = inject(PostService);
+  private readonly fallbackParamMap$ = of(convertToParamMap({ slug: '' }));
+
+  private get routeParamMap$(): Observable<ParamMap> {
+    return this.route?.paramMap ?? this.fallbackParamMap$;
+  }
 
   backToArticles(): void {
     window.scrollTo({ top: 0 });
     this.router.navigate(['/blog']);
   }
 
-  private readonly articles: ArticlePost[] = articlesData.map(article => ({
-    ...article,
-    author: {
-      name: profileData.fullName,
-      avatar: profileData.avatar
-    },
-    date: new Date(article.date),
-  }));
+  onPostContentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement | null;
+    const anchor = target?.closest('a');
+
+    if (!anchor) {
+      return;
+    }
+
+    const href = anchor.getAttribute('href') ?? '';
+    if (!href.startsWith('#')) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const fragment = decodeURIComponent(href.slice(1));
+    if (!fragment) {
+      return;
+    }
+
+    const root = this.elementRef.nativeElement;
+    const directMatch = root.querySelector(`#${CSS.escape(fragment)}`) as HTMLElement | null;
+
+    if (directMatch) {
+      directMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    const wanted = this.slugify(fragment);
+    const headings = Array.from(root.querySelectorAll('h1, h2, h3, h4, h5, h6')) as HTMLElement[];
+    const byText = headings.find((heading) => this.slugify(heading.textContent ?? '') === wanted);
+
+    byText?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  private slugify(value: string): string {
+    return value
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-');
+  }
 
   readonly slug = toSignal(
-    this.route.paramMap.pipe(map(params => params.get('slug') ?? '')),
+    this.routeParamMap$.pipe(map(params => params.get('slug') ?? '')),
+    { initialValue: this.route?.snapshot?.paramMap.get('slug') ?? '' },
+  );
+
+  readonly post = computed(() => this.postService.findBySlug(this.slug()));
+
+  readonly body = toSignal(
+    this.routeParamMap$.pipe(
+      map((params) => params.get('slug') ?? ''),
+      switchMap((slug) => {
+        if (!slug) {
+          return of('');
+        }
+
+        return this.postService
+          .getBody(slug)
+          .pipe(
+            map((response) => response.content),
+            catchError(() => of('')),
+          );
+      }),
+    ),
     { initialValue: '' },
   );
 
-  readonly post = computed(() => this.articles.find(article => article.slug === this.slug()));
-
-  readonly markdownBody = computed(() => this.post()?.body ?? this.post()?.description ?? '');
+  readonly markdownBody = computed(() => this.body() || this.post()?.description || '');
 
   readonly postBodyHtml = computed(() => marked.parse(this.markdownBody()) as string);
 
   readonly recommended = computed<RecommendedArticle[]>(() =>
-    this.articles
-      .filter(article => article.slug !== this.slug())
-      .slice(0, 5)
-      .map(article => ({
-        image: article.thumbnail ?? article.picture,
-        title: article.title,
-        slug: article.slug,
-      })),
+    this.postService.getRecommended(this.slug()),
   );
+
+  getBody(slug: string): Observable<ArticleBody> {
+    return this.postService.getBody(slug);
+  }
 }

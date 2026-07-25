@@ -31,7 +31,7 @@
 			</header>
 
 			<section class="post-content">
-				<div class="post-markdown" [innerHTML]="postBodyHtml()"></div>
+				<div class="post-markdown" (click)="onPostContentClick($event)" [innerHTML]="postBodyHtml()"></div>
 			</section>
 
 			<a class="back-link" (click)="backToArticles()" i18n="@@post-back-to-articles">Voltar para artigos</a>

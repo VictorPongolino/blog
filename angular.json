@@ -23,11 +23,11 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en",
+        "sourceLocale": "pt",
         "locales": {
-          "pt": {
-            "translation": "src/locale/messages.xlf",
-            "subPath": "pt"
+          "en-US": {
+            "translation": "src/locale/messages.en.xlf",
+            "subPath": ""
           }
         }
       },
@@ -38,7 +38,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "localize": [
-              "en"
+              "en-US"
             ],
             "assets": [
               {

@@ -1,6 +1,6 @@
-import { Component, Input, output, OnInit, OnDestroy, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import profileData from '../../../../artigos/profile.json';
+import { Component, Input, output, OnInit, OnDestroy, ElementRef, ChangeDetectorRef, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ArticleMetadataService } from '../../services/article-metadata.service';
 
 @Component({
   selector: 'app-aside',
@@ -10,13 +10,35 @@ import profileData from '../../../../artigos/profile.json';
   styleUrl: './aside.css',
 })
 export class Aside implements OnInit, OnDestroy {
+  private readonly articleMetadataService = inject(ArticleMetadataService);
+  private readonly route = inject(ActivatedRoute, { optional: true });
+
   @Input() recommended: RecommendedArticle[] = [];
-  readonly profile: Profile = profileData;
+  readonly profile: Profile = this.articleMetadataService.getProfile();
   readonly searchSubmitted = output<string>();
   
   navbarFixed = false;
   private navbarElement: HTMLElement | null = null;
   private observer: ResizeObserver | null = null;
+
+  get displayedRecommended(): RecommendedArticle[] {
+    if (this.recommended.length > 0) {
+      return this.recommended;
+    }
+
+    const currentSlug = (this.route?.snapshot?.paramMap.get('slug') ?? '').trim().toLowerCase();
+
+    return this.articleMetadataService
+      .getArticles()
+      .filter((article) => article.slug.toLowerCase() !== currentSlug)
+      .map((article) => ({
+        image: article.thumbnail ?? article.picture ?? '',
+        title: article.title,
+        slug: article.slug,
+      }))
+      .filter((article) => article.image.length > 0)
+      .slice(0, 5);
+  }
 
   constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
 
@@ -56,7 +78,7 @@ export class Aside implements OnInit, OnDestroy {
   }
 }
 interface RecommendedArticle { 
-  image?: string;
+  image: string;
   title: string;
   slug: string;
 }

@@ -1,13 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import articlesData from '../../../../../public/articles/metadata/articles.json';
 
 import { Post } from './post';
 
 describe('Post', () => {
   let component: Post;
   let fixture: ComponentFixture<Post>;
-  const paramMap$ = new BehaviorSubject(convertToParamMap({ slug: 'teste' }));
+  const existingSlug = articlesData[0]?.slug ?? '';
+  const paramMap$ = new BehaviorSubject(convertToParamMap({ slug: existingSlug }));
 
   beforeEach(async () => {
     TestBed.overrideComponent(Post, {
@@ -47,7 +49,7 @@ describe('Post', () => {
   it('should resolve a post from the current slug', () => {
     const post = component.post();
     expect(post).toBeTruthy();
-    expect(post?.slug).toBe('teste');
+    expect(post?.slug).toBe(existingSlug);
   });
 
   it('should exclude current post from recommended list', () => {
@@ -57,9 +59,13 @@ describe('Post', () => {
   });
 
   it('should react when slug changes', () => {
-    paramMap$.next(convertToParamMap({ slug: 'teste2' }));
+    paramMap$.next(convertToParamMap({ slug: 'missing-slug' }));
+    fixture.detectChanges();
+    expect(component.post()).toBeUndefined();
+
+    paramMap$.next(convertToParamMap({ slug: existingSlug }));
     fixture.detectChanges();
 
-    expect(component.post()?.slug).toBe('teste2');
+    expect(component.post()?.slug).toBe(existingSlug);
   });
 });
