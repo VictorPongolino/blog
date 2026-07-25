@@ -42,11 +42,11 @@ export class Navbar {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        // Check if URL matches /blog/:slug pattern (detail page)
-        // Detail pages: /blog/teste, /blog/teste1, etc.
-        // List page: /blog
+        // Check if URL matches /:slug pattern (detail page)
+        // Detail pages: /teste, /teste1, etc.
+        // List page: /
         const urlPath = event.urlAfterRedirects || event.url;
-        const isDetail = /\/blog\/[^/]+$/.test(urlPath);
+        const isDetail = /^\/[^/?#]+(?:\?.*)?$/.test(urlPath);
         this.isDetailPage.set(isDetail);
         // Reset scroll position when navigating to a new page
         this.scrollPosition.set(0);
@@ -54,7 +54,7 @@ export class Navbar {
 
     // Initial check on component init
     const currentUrl = this.router.url;
-    const isDetail = /\/blog\/[^/]+$/.test(currentUrl);
+    const isDetail = /^\/[^/?#]+(?:\?.*)?$/.test(currentUrl);
     this.isDetailPage.set(isDetail);
   }
 

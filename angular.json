@@ -23,11 +23,11 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "pt",
+        "sourceLocale": "en",
         "locales": {
-          "en": {
-            "translation": "src/locale/messages.en.xlf",
-            "subPath": ""
+          "pt": {
+            "translation": "src/locale/messages.xlf",
+            "subPath": "pt"
           }
         }
       },

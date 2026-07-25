@@ -47,7 +47,7 @@ export class Post {
 
   backToArticles(): void {
     window.scrollTo({ top: 0 });
-    this.router.navigate(['/blog']);
+    this.router.navigate(['/']);
   }
 
   private readonly articles: ArticlePost[] = articlesData.map(article => ({

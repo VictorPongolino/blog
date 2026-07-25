@@ -5,7 +5,7 @@
 				@if ((currentPost.tags?.length ?? 0) > 0) {
 					<ul class="tags">
 						@for (tag of currentPost.tags ?? []; track tag) {
-							<li><a [routerLink]="['/blog', 'tag', tag.slug]">{{ tag.name }}</a></li>
+							<li><a [routerLink]="['/tag', tag.slug]">{{ tag.name }}</a></li>
 						}
 					</ul>
 				}

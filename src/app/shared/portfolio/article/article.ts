@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, computed, inject, input, signal, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ArticleSearch, FilterState } from '../article-search/article-search';
 import { ArticlePagination } from "../article-pagination/article-pagination";
@@ -9,7 +9,7 @@ import { ArticlePagination } from "../article-pagination/article-pagination";
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [DatePipe, RouterLink, ArticleSearch, ArticlePagination],
+  imports: [DatePipe, ArticleSearch, ArticlePagination],
   templateUrl: './article.html',
   styleUrl: './article.css',
 })
@@ -52,7 +52,7 @@ export class Article {
 
   navigateToPost(slug: string): void {
     window.scrollTo({ top: 0 });
-    this.router.navigate(['/blog', slug]);
+    this.router.navigate(['/', slug]);
   }
 
   readonly filteredArticles = computed(() => {
