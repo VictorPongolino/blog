@@ -20,10 +20,16 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should expose the default app title signal', () => {
     const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
+    const app = fixture.componentInstance;
+    expect((app as any).title()).toBe('blog');
+  });
+
+  it('should render router outlet container', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, blog');
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });

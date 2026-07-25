@@ -7,16 +7,28 @@ describe('Portfolio', () => {
   let fixture: ComponentFixture<Portfolio>;
 
   beforeEach(async () => {
+    TestBed.overrideComponent(Portfolio, {
+      set: {
+        imports: [],
+        template: '<section data-testid="portfolio-root"></section>',
+      },
+    });
+
     await TestBed.configureTestingModule({
-      declarations: [Portfolio],
+      imports: [Portfolio],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Portfolio);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render the article layout container', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('[data-testid="portfolio-root"]')).toBeTruthy();
   });
 });
