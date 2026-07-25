@@ -90,6 +90,7 @@
 .post-markdown {
 	font-size: clamp(0.95rem, 1.2vw, 1.1rem);
 	line-height: 1.6;
+	overflow-wrap: anywhere;
 }
 
 .post-markdown h1,
@@ -127,6 +128,7 @@
 	background-color: #101828;
 	color: #e7ecf5;
 	overflow-x: auto;
+	max-width: 100%;
 	padding: 12px;
 	border-radius: 8px;
 	margin: 0 0 clamp(12px, 1.8vw, 18px);

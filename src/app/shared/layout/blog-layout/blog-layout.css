@@ -15,6 +15,7 @@
 .main-content {
   display: block;
   flex: 1;
+  min-width: 0;
   order: 2;
 }
 
