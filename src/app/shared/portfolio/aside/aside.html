@@ -42,7 +42,7 @@
             <ul>
                 @for(recommended_posts of recommended; track recommended_posts.slug) {
                     <li class="suggested-article-item">
-                        <a [routerLink]="['/', recommended_posts.slug]">
+                        <a [routerLink]="['/blog', recommended_posts.slug]">
                             <img src="{{ recommended_posts.image }}" alt="{{ recommended_posts.title }}">
                             <h5>{{ recommended_posts.title }}</h5>
                         </a>

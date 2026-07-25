@@ -52,7 +52,7 @@ export class Article {
 
   navigateToPost(slug: string): void {
     window.scrollTo({ top: 0 });
-    this.router.navigate(['/', slug]);
+    this.router.navigate(['/blog', slug]);
   }
 
   readonly filteredArticles = computed(() => {
