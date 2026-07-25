@@ -1,32 +1,8 @@
 [
   {
-    "slug": "teste",
-    "title": "Lorem ipsum dolor sit amet",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet est lacinia, malesuada orci eu, pulvinar orci.",
-    "tags": [{"slug": "angular", "name": "Angular"}, {"slug": "typescript", "name": "TypeScript"}, {"slug": "javascript", "name": "JavaScript"}]
-  },
-  {
-    "slug": "teste1",
-    "title": "Lorem sit amet",
-    "description": "Proin consectetur, justo non maximus dictum, augue lorem interdum sapien, sit amet egestas elit dui at felis.",
-    "tags": [{"slug": "angular", "name": "Angular"}, {"slug": "typescript", "name": "TypeScript"}, {"slug": "javascript", "name": "JavaScript"}]
-  },
-  {
-    "slug": "teste2",
-    "title": "Lorem ipsum",
-    "description": "Lorem ipsum dolor sit amet. Maecenas nec blandit mi, nec auctor diam.",
-    "tags": [{"slug": "angular", "name": "Angular"}, {"slug": "typescript", "name": "TypeScript"}, {"slug": "javascript", "name": "JavaScript"}]
-  },
-  {
-    "slug": "teste3",
-    "title": "Lorem ipsum dolor",
-    "description": "Lorem ipsum dolor sit amet. Maecenas nec blandit mi, nec auctor diam.",
-    "tags": [{"slug": "angular", "name": "Angular"}, {"slug": "javascript", "name": "JavaScript"}]
-  },
-  {
-    "slug": "teste4",
-    "title": "Lorem ipsum final",
-    "description": "Lorem ipsum dolor sit amet. Maecenas nec blandit mi, nec auctor diam.",
-    "tags": [{"slug": "angular", "name": "Angular"}, {"slug": "javascript", "name": "JavaScript"}]
+    "slug": "project-reactor-zip-merge-concat",
+    "title": "Project Reactor: the difference between zip, merge and concat operation",
+    "description": "A practical comparison of zip, merge, and concat in Project Reactor, with guidance on ordering, synchronization, and performance trade-offs.",
+    "tags": [{"slug": "java", "name": "Java"}, {"slug": "spring", "name": "Spring"}, {"slug": "reactor", "name": "Project Reactor"}]
   }
 ]
