@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, Router, provideRouter } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import { Article } from './article';
+import { ArticleCatalog } from './article';
 
-describe('Article', () => {
-  let component: Article;
-  let fixture: ComponentFixture<Article>;
+describe('ArticleCatalog', () => {
+  let component: ArticleCatalog;
+  let fixture: ComponentFixture<ArticleCatalog>;
   let router: Router;
 
   const queryParamMap$ = new BehaviorSubject(convertToParamMap({ page: '1' }));
@@ -34,7 +34,7 @@ describe('Article', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Article],
+      imports: [ArticleCatalog],
       providers: [
         provideRouter([]),
         {
@@ -46,7 +46,7 @@ describe('Article', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Article);
+    fixture = TestBed.createComponent(ArticleCatalog);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
 

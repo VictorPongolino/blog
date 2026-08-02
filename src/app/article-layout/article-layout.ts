@@ -1,5 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
-import { Article } from '../shared/portfolio/article/article';
+import { Component, computed, inject, signal } from '@angular/core';
+import { ArticleCatalog } from '../shared/portfolio/article/article';
 import { ArticleOutline } from '../shared/portfolio/article/article';
 import { BlogLayout } from '../shared/layout/blog-layout/blog-layout';
 import { ArticleMetadataService } from '../shared/services/article-metadata.service';
@@ -23,7 +23,7 @@ interface SearchedContent {
 @Component({
   selector: 'app-article-layout',
   standalone: true,
-  imports: [BlogLayout, Article],
+  imports: [BlogLayout, ArticleCatalog],
   templateUrl: './article-layout.html',
   styleUrl: './article-layout.css',
 })
@@ -40,14 +40,34 @@ export class ArticleLayout {
     date: new Date(article.date),
   }));
 
-  readonly recommended: RecommendedArticle[] = this.articles
-    .map((article) => ({
-      image: article.thumbnail ?? article.picture ?? '',
-      title: article.title,
-      slug: article.slug,
-    }))
-    .filter((article) => article.image.length > 0)
-    .slice(0, 5);
+  readonly visibleArticleSlugs = signal<string[]>([]);
+
+  readonly recommended = computed<RecommendedArticle[]>(() => {
+    const visibleSlugSet = new Set(this.visibleArticleSlugs());
+
+    const hiddenFromCurrentPage = this.articles
+      .filter((article) => !visibleSlugSet.has(article.slug))
+      .map((article) => ({
+        image: article.thumbnail ?? article.picture ?? '',
+        title: article.title,
+        slug: article.slug,
+      }))
+      .filter((article) => article.image.length > 0)
+      .slice(0, 5);
+
+    if (hiddenFromCurrentPage.length > 0) {
+      return hiddenFromCurrentPage;
+    }
+
+    return this.articles
+      .map((article) => ({
+        image: article.thumbnail ?? article.picture ?? '',
+        title: article.title,
+        slug: article.slug,
+      }))
+      .filter((article) => article.image.length > 0)
+      .slice(0, 5);
+  });
 
   readonly searchedContent = signal<SearchedContent>({});
   readonly showSearchControl = signal(false);
@@ -60,5 +80,9 @@ export class ArticleLayout {
     
     this.showSearchControl.set(true);
     this.searchedContent.update((current) => ({ ...current, content: value }));
+  }
+
+  onVisibleArticlesChange(slugs: string[]): void {
+    this.visibleArticleSlugs.set(slugs);
   }
 }

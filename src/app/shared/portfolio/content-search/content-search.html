@@ -1,0 +1,73 @@
+<div class="searchbar" [class.collapsible-mode]="isCollapsible()">
+  @if (showHeading()) {
+    <h4 i18n="@@aside-search-title">Search</h4>
+  }
+
+  <div class="search-shell">
+    @if (isCollapsible()) {
+      <button
+        type="button"
+        class="icon-button trigger-btn"
+        [class.hidden]="isExpanded()"
+        (click)="openSearch()"
+        aria-label="Pesquisar"
+        i18n-aria-label="@@aside-search-action-aria"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+      </button>
+    }
+
+    <form
+      class="searchbar-input"
+      [class.collapsible-input]="isCollapsible()"
+      [class.is-open]="!isCollapsible() || isExpanded()"
+      (submit)="submitSearch($event)"
+    >
+      <input
+        #searchInput
+        type="text"
+        [value]="query()"
+        (input)="onQueryInput($event)"
+        (keydown.enter)="submitSearch($event)"
+        placeholder="Pesquisar"
+        i18n-placeholder="@@aside-search-placeholder"
+        aria-label="Pesquisar"
+        i18n-aria-label="@@aside-search-action-aria"
+        [disabled]="isCollapsible() && !isExpanded()"
+      />
+
+      @if (query()) {
+        <button
+          type="button"
+          class="icon-button close-btn"
+          (click)="clearSearch()"
+          aria-label="Limpar busca"
+          i18n-aria-label="@@aside-clear-search-aria"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+      }
+
+      @if (!query() && isCollapsible() && isExpanded()) {
+        <button
+          type="button"
+          class="icon-button close-btn"
+          (click)="closeSearch()"
+          aria-label="Fechar busca"
+          i18n-aria-label="@@aside-close-search-aria"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+      }
+
+      <button
+        type="submit"
+        class="icon-button"
+        aria-label="Pesquisar"
+        i18n-aria-label="@@aside-search-action-aria"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,21 +1,29 @@
-import { Component, signal, inject, effect, computed, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, output, signal } from '@angular/core';
 import { RouterLink, Router, NavigationEnd } from '@angular/router';
 import { ScrollTitleService } from '../../services/scroll-title.service';
 import { filter } from 'rxjs';
+import { ArticleMetadataService } from '../../services/article-metadata.service';
+import { ContentSearch } from '../content-search/content-search';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ContentSearch],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(window:scroll)': 'onWindowScroll()',
+  },
 })
 export class Navbar {
   isMenuOpen = signal(false);
   readonly currentLocale = signal<'en' | 'pt'>(this.detectCurrentLocale());
   readonly scrollTitleService = inject(ScrollTitleService);
+  readonly metadata = inject(ArticleMetadataService);
   readonly isDetailPage = signal(false);
   readonly scrollPosition = signal(0);
+  readonly searchSubmitted = output<string>();
   
   // Threshold (px) after which navbar should stop being fixed on detail pages
   // This allows the intro section (author info, image) to be read without navbar overlap
@@ -58,7 +66,6 @@ export class Navbar {
     this.isDetailPage.set(isDetail);
   }
 
-  @HostListener('window:scroll')
   onWindowScroll(): void {
     this.scrollPosition.set(window.scrollY);
   }

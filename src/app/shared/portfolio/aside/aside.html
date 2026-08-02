@@ -1,9 +1,14 @@
 <aside [class.navbar-fixed]="navbarFixed">
-    <div class="bio">
+
+    <!-- <div class="bio">
+        <h4 i18n="@@aside-about-me">About me</h4>
+    
         <div class="profile">
             <img [src]="profile.avatar" [alt]="profile.fullName">
-            <h4 class="profile-name">{{ profile.fullName }}</h4>
-            <p>{{ profile.title }}</p>
+            <div class="profile-container">
+                <h4 class="profile-name">{{ profile.fullName }}</h4>
+                <p>{{ profile.title }}</p>
+            </div>
         </div>
 
         <ul class="social-links">
@@ -11,32 +16,11 @@
             <li><a [href]="profile.socialLinks.linkedin" class="fa-brands fa-linkedin" target="_blank" rel="noopener noreferrer"></a></li>
             <li><a [href]="profile.socialLinks.youtube" class="fa-brands fa-youtube" target="_blank" rel="noopener noreferrer"></a></li>
         </ul>
-    </div>
+    </div> -->
 
-    <div class="searchbar">
-        <div class="searchbar-input">
-            <input #searchInput type="text" placeholder="Pesquisar" i18n-placeholder="@@aside-search-placeholder">
-            <span
-                class="material-symbols-outlined close-btn"
-                role="button"
-                tabindex="0"
-                (click)="searchInput.value = ''; onStopSearch()"
-                i18n-aria-label="@@aside-clear-search-aria"
-                aria-label="Limpar busca"
-            >close</span>
-            <span
-                class="material-symbols-outlined"
-                role="button"
-                tabindex="0"
-                (click)="onSearchContent(searchInput.value)"
-                (keydown.enter)="onSearchContent(searchInput.value)"
-                i18n-aria-label="@@aside-search-action-aria"
-                aria-label="Pesquisar"
-            >search</span>
-        </div>
-    </div>
     
-    @if(displayedRecommended.length > 0) {
+    
+    <!-- @if(displayedRecommended.length > 0) {
         <div class="suggested-articles"> 
             <h4 i18n="@@aside-see-also">Veja também</h4>
             <ul>
@@ -50,5 +34,5 @@
                 }
             </ul>
         </div>
-    }
+    } -->
 </aside>

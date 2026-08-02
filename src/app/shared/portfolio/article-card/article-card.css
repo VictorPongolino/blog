@@ -1,0 +1,103 @@
+.article-card-link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: #191919;
+    text-align: inherit;
+    cursor: pointer;
+}
+
+.article-card-link.layout-top {
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-card-link.layout-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.article-title-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.article-card-link.layout-left .article-title-section {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.article-title {
+    font-weight: bold;
+    margin: 12px 12px 6px;
+    color: #FFFEEB;
+}
+
+.article-description {
+    margin: 0 12px 10px;
+    color: #d2d2dc;
+    font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+    line-height: 1.35;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-wrap: pretty;
+}
+
+.main-image-link {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.main-image {
+    border-radius: 8px;
+    width: clamp(150px, 100%, 350px);
+    height: clamp(150px, 20vw, 350px);
+    object-fit: cover;
+    transform: translateY(0) scale(1);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms ease;
+}
+
+.dark-transition {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(20px, 18%, 48px);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    pointer-events: none;
+    background-image: linear-gradient(to bottom, #0000, #0F0F2F);
+}
+
+.article-card-link:hover .main-image,
+.article-card-link:focus-visible .main-image {
+    transform: translateY(-2px) scale(1.02);
+    filter: saturate(1.08) contrast(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-image {
+        transition: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .main-image {
+        height: clamp(100px, 20vw, 250px);
+    }
+}

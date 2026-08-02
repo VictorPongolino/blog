@@ -1,5 +1,5 @@
 <app-blog-layout
-    [recommended]="recommended"
+    [recommended]="recommended()"
     (searchSubmitted)="onUserSearchedContent($event)"
 >
     <div class="mobile-title">
@@ -7,9 +7,10 @@
         <h3 i18n="@@article-layout-mobile-title">Postagens</h3>
         <span> </span>
     </div>    
-    <app-article
+    <app-article-catalog
         [articles]="articles"
         [showSearchControl]="showSearchControl()"
         [searchQuery]="searchedContent().content ?? ''"
-    ></app-article>
+        (visibleArticlesChange)="onVisibleArticlesChange($event)"
+    ></app-article-catalog>
 </app-blog-layout>

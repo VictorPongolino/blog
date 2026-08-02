@@ -1,11 +1,11 @@
-import { Component, Input, output, OnInit, OnDestroy, ElementRef, ChangeDetectorRef, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, Input, OnInit, OnDestroy, ElementRef, ChangeDetectorRef, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ArticleMetadataService } from '../../services/article-metadata.service';
 
 @Component({
   selector: 'app-aside',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './aside.html',
   styleUrl: './aside.css',
 })
@@ -15,7 +15,6 @@ export class Aside implements OnInit, OnDestroy {
 
   @Input() recommended: RecommendedArticle[] = [];
   readonly profile: Profile = this.articleMetadataService.getProfile();
-  readonly searchSubmitted = output<string>();
   
   navbarFixed = false;
   private navbarElement: HTMLElement | null = null;
@@ -67,14 +66,6 @@ export class Aside implements OnInit, OnDestroy {
         this.cdr.markForCheck();
       }
     }
-  }
-
-  onSearchContent(value: string): void {   
-    this.searchSubmitted.emit(value.trim());
-  }
-
-  onStopSearch(): void {
-    this.searchSubmitted.emit('');
   }
 }
 interface RecommendedArticle { 

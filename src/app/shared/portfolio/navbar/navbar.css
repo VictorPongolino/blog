@@ -76,6 +76,10 @@ nav {
     gap: 1rem;
 }
 
+.nav-search {
+    width: min(100%, 420px);
+}
+
 .nav-links {
     display: flex;
     flex-direction: inherit;
@@ -187,7 +191,7 @@ nav a:hover {
 
 nav.open {
     display: flex;
-        min-height: clamp(10rem, 45vw, 14rem);
+    min-height: clamp(10rem, 45vw, 14rem);
 }
 
 @media (min-width: 768px) {
@@ -195,25 +199,44 @@ nav.open {
         min-height: auto;
     }
 
-  .toggleBox {
-    display: none;
-  }
+    .toggleBox {
+        display: none;
+    }
 
-  nav {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    nav {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
 
-    width: min(90%, 1100px);
-    min-height: clamp(1rem, 5vw, 2rem);
-    margin: 0 auto;
-    padding: 1.25rem 2rem;
-    border-radius: 14px;
-  }
+        width: min(90%, 1100px);
+        min-height: clamp(1rem, 5vw, 2rem);
+        margin: 0 auto;
+        padding: 1.25rem 2rem;
+        border-radius: 14px;
+    }
+
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    app-content-search {
+        margin-right: 1.5rem;
+    }
+
+    .social-links a {
+        color: var(--text-color);
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        transition: 0.2s;
+    }
 
     .nav-links {
+        display: flex;
+        align-items: center;
         gap: 2.5rem;
     }
 

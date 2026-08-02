@@ -1,26 +1,29 @@
-import { DatePipe } from '@angular/common';
-import { Component, computed, inject, input, signal, Signal } from '@angular/core';
+import { Component, computed, effect, inject, input, output, signal, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ArticleSearch, FilterState } from '../article-search/article-search';
 import { ArticlePagination } from "../article-pagination/article-pagination";
+import { ARTICLE_CARD_LAYOUT, ArticleCard } from '../article-card/article-card';
 
 @Component({
-  selector: 'app-article',
+  selector: 'app-article-catalog',
   standalone: true,
-  imports: [DatePipe, ArticleSearch, ArticlePagination],
+  imports: [ArticleSearch, ArticlePagination, ArticleCard],
   templateUrl: './article.html',
   styleUrl: './article.css',
 })
-export class Article {
+export class ArticleCatalog {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly router: Router = inject(Router);
+
+  readonly articleCardLayout = ARTICLE_CARD_LAYOUT;
   
   readonly maxItemsPerPage = signal(10);
   readonly articles = input.required<ArticleOutline[]>();
   readonly showSearchControl = input(false);
   readonly searchQuery = input('');
+  readonly visibleArticlesChange = output<string[]>();
 
   readonly currentPage = toSignal(this.route.queryParamMap.pipe(map(params => Number(params.get('page') || 1))), { initialValue: 1 });
   readonly filter = signal<FilterState>({ order: 'Most Recent', tempo: 'Always', categoria: 'All' });
@@ -111,6 +114,12 @@ export class Article {
     const end = start + this.maxItemsPerPage();
     return this.sourceArticles().slice(start, end);
   });
+
+  constructor() {
+    effect(() => {
+      this.visibleArticlesChange.emit(this.visibleArticles().map((article) => article.slug));
+    });
+  }
 
   readonly showPagination: Signal<boolean> = computed(() => this.sourceArticles().length > this.maxItemsPerPage());
   readonly pages = computed(() => Array.from({ length: Math.ceil(this.sourceArticles().length / this.maxItemsPerPage()) }, (_, i) => i + 1));
