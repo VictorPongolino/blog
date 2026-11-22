@@ -1,6 +1,7 @@
 import { site } from '../config';
 import { icons } from '../icons';
 import type { Dictionary } from '../i18n';
+import { projects } from '../projects';
 
 export function socialLinks(className = ''): string {
   const items: [string, string, string][] = [
@@ -78,7 +79,7 @@ export function hero(t: Dictionary): string {
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#contact" class="btn btn-primary">${t.hero.ctaPrimary} ${icons.arrowRight}</a>
-            <a href="#projects" class="btn btn-ghost">${t.hero.ctaSecondary}</a>
+            ${projects.length ? `<a href="#projects" class="btn btn-ghost">${t.hero.ctaSecondary}</a>` : ''}
           </div>
 
           ${socialLinks('mt-8')}

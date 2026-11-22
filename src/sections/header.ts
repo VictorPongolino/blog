@@ -1,7 +1,16 @@
 import { icons } from '../icons';
 import { LOCALES, type Dictionary, type Locale } from '../i18n';
+import { projects } from '../projects';
 
-export const NAV_SECTIONS = ['about', 'skills', 'experience', 'projects', 'contact'] as const;
+const ALL_SECTIONS = ['about', 'skills', 'experience', 'projects', 'contact'] as const;
+type SectionId = (typeof ALL_SECTIONS)[number];
+
+/** Sections without content are left out of the page and the menu. */
+export const NAV_SECTIONS = ALL_SECTIONS.filter((id) => id !== 'projects' || projects.length > 0);
+
+/** "01", "02"… following the sections actually shown. */
+export const sectionNumber = (id: SectionId): string =>
+  String(NAV_SECTIONS.indexOf(id) + 1).padStart(2, '0');
 
 function languageSwitch(t: Dictionary, locale: Locale): string {
   const buttons = LOCALES.map(({ code, label }) => {
@@ -23,10 +32,10 @@ function languageSwitch(t: Dictionary, locale: Locale): string {
 export function header(t: Dictionary, locale: Locale): string {
   const links = (className: string) =>
     NAV_SECTIONS.map(
-      (id, i) => `
+      (id) => `
         <li>
           <a href="#${id}" data-nav-link="${id}" class="${className}">
-            <span class="text-accent">0${i + 1}.</span> ${t.nav[id]}
+            <span class="text-accent">${sectionNumber(id)}.</span> ${t.nav[id]}
           </a>
         </li>`,
     ).join('');

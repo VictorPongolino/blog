@@ -22,7 +22,7 @@ function render(): void {
       ${about(t)}
       ${skills(t)}
       ${experience(t)}
-      ${projects(t)}
+      ${projects(t, locale)}
       ${contact(t)}
     </main>
     ${footer(t)}`;

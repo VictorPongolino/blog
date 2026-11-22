@@ -24,13 +24,14 @@ npm run preview
 
 ## Replacing the placeholders
 
-| What                                   | Where                                          |
-| -------------------------------------- | ---------------------------------------------- |
-| Texts (English)                        | `src/i18n/en.ts`                               |
-| Texts (Portuguese)                     | `src/i18n/pt.ts`                               |
-| Photo, e-mail, social and project URLs | `src/config.ts`                                |
-| Images                                 | `public/images/` (then update `src/config.ts`) |
-| Colors and fonts                       | `@theme` block in `src/style.css`              |
+| What                                    | Where                                          |
+| --------------------------------------- | ---------------------------------------------- |
+| Texts (English)                         | `src/i18n/en.ts`                               |
+| Texts (Portuguese)                      | `src/i18n/pt.ts`                               |
+| Photo, e-mail, social and project URLs  | `src/config.ts`                                |
+| Projects (empty list hides the section) | `src/projects.ts`                              |
+| Images                                  | `public/images/` (then update `src/config.ts`) |
+| Colors and fonts                        | `@theme` block in `src/style.css`              |
 
 `pt.ts` is typed against `en.ts`, so the build fails if a translation is missing.
 

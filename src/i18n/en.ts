@@ -1,6 +1,6 @@
 /**
  * English content (default language).
- * Anything marked "Placeholder" (photo, projects, contact text) is meant to be replaced with real content.
+ * Anything marked "Placeholder" (photo, contact text) is meant to be replaced with real content.
  * Keep the same shape in pt.ts — TypeScript will complain if they drift.
  */
 export const en = {
@@ -128,30 +128,9 @@ export const en = {
   projects: {
     eyebrow: 'Projects',
     title: 'Selected work',
-    subtitle: 'Placeholder projects — replace images, descriptions and links with real ones.',
     code: 'Code',
     live: 'Live',
-    imageAlt: 'Project screenshot (placeholder)',
-    items: [
-      {
-        name: 'Project One',
-        description:
-          'Placeholder description — the problem this project solves, your role and the main technical challenge.',
-        stack: ['Java', 'Spring WebFlux', 'Kafka'],
-      },
-      {
-        name: 'Project Two',
-        description:
-          'Placeholder description — the problem this project solves, your role and the main technical challenge.',
-        stack: ['Kotlin', 'PostgreSQL', 'Docker'],
-      },
-      {
-        name: 'Project Three',
-        description:
-          'Placeholder description — the problem this project solves, your role and the main technical challenge.',
-        stack: ['Java', 'Redis', 'Kubernetes'],
-      },
-    ],
+    imageAlt: 'Project screenshot',
   },
   contact: {
     eyebrow: 'Contact',

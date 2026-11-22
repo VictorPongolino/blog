@@ -1,6 +1,8 @@
 import { site } from '../config';
 import { icons } from '../icons';
-import type { Dictionary } from '../i18n';
+import type { Dictionary, Locale } from '../i18n';
+import { projects as projectList } from '../projects';
+import { sectionNumber } from './header';
 import { socialLinks } from './hero';
 import { chips, sectionHeading } from './shared';
 
@@ -8,7 +10,7 @@ export function about(t: Dictionary): string {
   return `
     <section id="about" class="section">
       <div class="container-page">
-        ${sectionHeading('01', t.about.eyebrow, t.about.title)}
+        ${sectionHeading(sectionNumber('about'), t.about.eyebrow, t.about.title)}
         <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <div class="space-y-5 text-base leading-relaxed text-slate-400 sm:text-lg" data-reveal>
             ${t.about.paragraphs.map((p) => `<p>${p}</p>`).join('')}
@@ -33,7 +35,7 @@ export function skills(t: Dictionary): string {
   return `
     <section id="skills" class="section border-y border-white/5 bg-ink-900/40">
       <div class="container-page">
-        ${sectionHeading('02', t.skills.eyebrow, t.skills.title, t.skills.subtitle)}
+        ${sectionHeading(sectionNumber('skills'), t.skills.eyebrow, t.skills.title, t.skills.subtitle)}
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           ${t.skills.groups
             .map(
@@ -55,7 +57,7 @@ export function experience(t: Dictionary): string {
   return `
     <section id="experience" class="section">
       <div class="container-page">
-        ${sectionHeading('03', t.experience.eyebrow, t.experience.title)}
+        ${sectionHeading(sectionNumber('experience'), t.experience.eyebrow, t.experience.title)}
         <ol class="relative space-y-10 border-l border-white/10 pl-6 sm:pl-8">
           ${t.experience.items
             .map(
@@ -99,8 +101,11 @@ export function experience(t: Dictionary): string {
     </section>`;
 }
 
-export function projects(t: Dictionary): string {
-  const link = (href: string, label: string, icon: string) =>
+export function projects(t: Dictionary, locale: Locale): string {
+  // No projects yet (see src/projects.ts): render nothing at all.
+  if (projectList.length === 0) return '';
+
+  const link = (href: string | undefined, label: string, icon: string) =>
     href
       ? `<a href="${href}" class="inline-flex items-center gap-1.5 py-2 font-mono text-sm text-slate-300 transition-colors hover:text-accent">${icon} ${label}</a>`
       : '';
@@ -108,26 +113,25 @@ export function projects(t: Dictionary): string {
   return `
     <section id="projects" class="section border-y border-white/5 bg-ink-900/40">
       <div class="container-page">
-        ${sectionHeading('04', t.projects.eyebrow, t.projects.title, t.projects.subtitle)}
+        ${sectionHeading(sectionNumber('projects'), t.projects.eyebrow, t.projects.title)}
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          ${t.projects.items
-            .map((project, i) => {
-              const data = site.projects[i];
-              return `
+          ${projectList
+            .map(
+              (project) => `
             <article class="card group flex flex-col overflow-hidden transition-colors hover:border-accent/40" data-reveal>
-              <img src="${data.image}" alt="${t.projects.imageAlt}" width="800" height="450" loading="lazy"
+              <img src="${project.image ?? site.projectImageFallback}" alt="${t.projects.imageAlt}" width="800" height="450" loading="lazy"
                 class="aspect-video w-full border-b border-white/10 object-cover" />
               <div class="flex flex-1 flex-col p-5">
-                <h3 class="text-lg font-semibold text-white group-hover:text-accent">${project.name}</h3>
-                <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-400">${project.description}</p>
+                <h3 class="text-lg font-semibold text-white group-hover:text-accent">${project.name[locale]}</h3>
+                <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-400">${project.description[locale]}</p>
                 <div class="mt-4">${chips(project.stack)}</div>
                 <div class="mt-3 flex gap-5">
-                  ${link(data.code, t.projects.code, icons.github)}
-                  ${link(data.live, t.projects.live, icons.external)}
+                  ${link(project.code, t.projects.code, icons.github)}
+                  ${link(project.live, t.projects.live, icons.external)}
                 </div>
               </div>
-            </article>`;
-            })
+            </article>`,
+            )
             .join('')}
         </div>
       </div>
@@ -141,7 +145,7 @@ export function contact(t: Dictionary): string {
         <div class="card relative overflow-hidden px-5 py-12 text-center sm:px-12 sm:py-16" data-reveal>
           <div class="pointer-events-none absolute -bottom-32 left-1/2 size-96 -translate-x-1/2 rounded-full bg-accent-2/10 blur-3xl" aria-hidden="true"></div>
           <div class="relative">
-            <p class="font-mono text-sm text-accent"><span class="text-slate-500">05.</span> ${t.contact.eyebrow.toLowerCase()}</p>
+            <p class="font-mono text-sm text-accent"><span class="text-slate-500">${sectionNumber('contact')}.</span> ${t.contact.eyebrow.toLowerCase()}</p>
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">${t.contact.title}</h2>
             <p class="mx-auto mt-4 max-w-xl leading-relaxed text-slate-400">${t.contact.text}</p>
             <a href="mailto:${site.email}" class="btn btn-primary mt-8 w-full sm:w-auto">${icons.mail} ${t.contact.emailCta}</a>

@@ -2,7 +2,7 @@ import type { Dictionary } from './en';
 
 /**
  * Conteúdo em português.
- * O que estiver marcado como "Placeholder" (foto, projetos, texto de contato) deve ser substituído por conteúdo real.
+ * O que estiver marcado como "Placeholder" (foto, texto de contato) deve ser substituído por conteúdo real.
  */
 export const pt: Dictionary = {
   meta: {
@@ -129,31 +129,9 @@ export const pt: Dictionary = {
   projects: {
     eyebrow: 'Projetos',
     title: 'Trabalhos selecionados',
-    subtitle:
-      'Projetos de exemplo (placeholder) — substitua imagens, descrições e links pelos reais.',
     code: 'Código',
     live: 'Ver online',
-    imageAlt: 'Captura de tela do projeto (placeholder)',
-    items: [
-      {
-        name: 'Projeto Um',
-        description:
-          'Descrição de exemplo (placeholder) — o problema que o projeto resolve, seu papel e o principal desafio técnico.',
-        stack: ['Java', 'Spring WebFlux', 'Kafka'],
-      },
-      {
-        name: 'Projeto Dois',
-        description:
-          'Descrição de exemplo (placeholder) — o problema que o projeto resolve, seu papel e o principal desafio técnico.',
-        stack: ['Kotlin', 'PostgreSQL', 'Docker'],
-      },
-      {
-        name: 'Projeto Três',
-        description:
-          'Descrição de exemplo (placeholder) — o problema que o projeto resolve, seu papel e o principal desafio técnico.',
-        stack: ['Java', 'Redis', 'Kubernetes'],
-      },
-    ],
+    imageAlt: 'Captura de tela do projeto',
   },
   contact: {
     eyebrow: 'Contato',
