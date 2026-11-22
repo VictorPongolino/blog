@@ -40,7 +40,7 @@ export const en = {
     title: 'A little about me',
     paragraphs: [
       'I am a Backend Software Engineer with more than 4 years of experience in Java and Spring, specialized in building scalable microservices.',
-      'I work with distributed systems and event-driven architectures, using messaging technologies such as RabbitMQ, Apache Kafka, Amazon SQS and AWS Kinesis. At IBM I contributed to backend services that process HR data and support data integration flows. Before that, I worked on a BMW project delivering scalable Java Quarkus applications in a DevOps environment.',
+      'I work with distributed systems and event-driven architectures, using messaging technologies such as RabbitMQ, Apache Kafka, Amazon SQS and AWS Kinesis. Today, at Avanade, I build reactive services with Spring WebFlux for a banking institution. At IBM I contributed to backend services that process HR data and support data integration flows. Before that, I worked on a BMW project delivering scalable Java Quarkus applications in a DevOps environment.',
       'I am fluent in English and used to collaborating with international teams.',
     ],
     stats: [
@@ -55,8 +55,11 @@ export const en = {
     title: 'Technologies I work with',
     subtitle: 'The stack I use to design, ship and operate backend systems.',
     groups: [
-      { name: 'Languages', items: ['Java', 'Python', 'SQL'] },
-      { name: 'Frameworks', items: ['Spring Boot', 'Quarkus', 'React JS'] },
+      { name: 'Languages', items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL'] },
+      {
+        name: 'Frameworks',
+        items: ['Spring Boot', 'Spring WebFlux', 'Quarkus', 'Angular', 'React JS'],
+      },
       { name: 'Messaging', items: ['Apache Kafka', 'RabbitMQ', 'Amazon SQS', 'AWS Kinesis'] },
       { name: 'Data', items: ['MySQL', 'Redis', 'DynamoDB', 'Amazon RDS'] },
       {
@@ -65,7 +68,13 @@ export const en = {
       },
       {
         name: 'Architecture',
-        items: ['Microservices', 'Distributed systems', 'Event-driven'],
+        items: [
+          'Microservices',
+          'Distributed systems',
+          'Event-driven',
+          'Reactive BFFs',
+          'Resilience4j',
+        ],
       },
     ],
   },
@@ -73,6 +82,21 @@ export const en = {
     eyebrow: 'Experience',
     title: "Where I've worked",
     items: [
+      {
+        period: 'Apr 2026 — Present',
+        role: 'Senior Backend Software Engineer',
+        company: 'Avanade · Client: banking institution',
+        description:
+          'Reactive backend services in Java with Spring WebFlux for a banking institution.',
+        highlights: [
+          'Built resilience layers with Resilience4j: circuit breakers, retries and bulkheads.',
+          'Integrated backend services with the mainframe.',
+          'Consumed REST APIs with OpenFeign and WebClient over secure protocols.',
+          'Implemented input sanitization and advanced security such as encryption and secret vaults.',
+          'Developed reactive BFFs backed by Redis, delivering data fast to the front-end teams.',
+        ],
+        stack: ['Java', 'Spring WebFlux', 'Resilience4j', 'OpenFeign', 'Redis', 'Mainframe'],
+      },
       {
         period: 'Jul 2024 — Mar 2026',
         role: 'Backend Software Engineer',

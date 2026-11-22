@@ -41,7 +41,7 @@ export const pt: Dictionary = {
     title: 'Um pouco sobre mim',
     paragraphs: [
       'Sou Engenheiro de Software Backend com mais de 4 anos de experiência em Java e Spring, especializado na construção de microsserviços escaláveis.',
-      'Trabalho com sistemas distribuídos e arquiteturas orientadas a eventos, utilizando tecnologias de mensageria como RabbitMQ, Apache Kafka, Amazon SQS e AWS Kinesis. Na IBM, contribuí para serviços backend de processamento de dados em sistemas de RH, dando suporte a fluxos de integração de dados. Antes disso, trabalhei em um projeto da BMW, entregando aplicações Java Quarkus escaláveis em um ambiente DevOps.',
+      'Trabalho com sistemas distribuídos e arquiteturas orientadas a eventos, utilizando tecnologias de mensageria como RabbitMQ, Apache Kafka, Amazon SQS e AWS Kinesis. Hoje, na Avanade, construo serviços reativos com Spring WebFlux para uma instituição bancária. Na IBM, contribuí para serviços backend de processamento de dados em sistemas de RH, dando suporte a fluxos de integração de dados. Antes disso, trabalhei em um projeto da BMW, entregando aplicações Java Quarkus escaláveis em um ambiente DevOps.',
       'Sou fluente em inglês e tenho experiência em colaboração com equipes internacionais.',
     ],
     stats: [
@@ -56,8 +56,11 @@ export const pt: Dictionary = {
     title: 'Tecnologias com que trabalho',
     subtitle: 'A stack que uso para projetar, entregar e operar sistemas backend.',
     groups: [
-      { name: 'Linguagens', items: ['Java', 'Python', 'SQL'] },
-      { name: 'Frameworks', items: ['Spring Boot', 'Quarkus', 'React JS'] },
+      { name: 'Linguagens', items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL'] },
+      {
+        name: 'Frameworks',
+        items: ['Spring Boot', 'Spring WebFlux', 'Quarkus', 'Angular', 'React JS'],
+      },
       { name: 'Mensageria', items: ['Apache Kafka', 'RabbitMQ', 'Amazon SQS', 'AWS Kinesis'] },
       { name: 'Dados', items: ['MySQL', 'Redis', 'DynamoDB', 'Amazon RDS'] },
       {
@@ -66,7 +69,13 @@ export const pt: Dictionary = {
       },
       {
         name: 'Arquitetura',
-        items: ['Microsserviços', 'Sistemas distribuídos', 'Orientada a eventos'],
+        items: [
+          'Microsserviços',
+          'Sistemas distribuídos',
+          'Orientada a eventos',
+          'BFFs reativos',
+          'Resilience4j',
+        ],
       },
     ],
   },
@@ -74,6 +83,21 @@ export const pt: Dictionary = {
     eyebrow: 'Experiência',
     title: 'Onde já trabalhei',
     items: [
+      {
+        period: 'abr 2026 — Atual',
+        role: 'Backend Software Engineer Sênior',
+        company: 'Avanade · Cliente: instituição bancária',
+        description:
+          'Serviços backend reativos em Java com Spring WebFlux para uma instituição bancária.',
+        highlights: [
+          'Construção de camadas de resiliência com Resilience4j: circuit breakers, retries e bulkheads.',
+          'Integração dos serviços backend com o mainframe.',
+          'Consumo de APIs REST com OpenFeign e WebClient usando protocolos seguros.',
+          'Implementação de sanitização de entradas e segurança avançada, como criptografia e cofres de segredos.',
+          'Desenvolvimento de BFFs reativos com Redis, com entrega rápida de dados para os times de front-end.',
+        ],
+        stack: ['Java', 'Spring WebFlux', 'Resilience4j', 'OpenFeign', 'Redis', 'Mainframe'],
+      },
       {
         period: 'jul 2024 — mar 2026',
         role: 'Backend Software Engineer',
