@@ -58,13 +58,13 @@ export const en = {
       { name: 'Languages', items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL'] },
       {
         name: 'Frameworks',
-        items: ['Spring Boot', 'Spring WebFlux', 'Quarkus', 'Angular', 'React JS'],
+        items: ['Spring Boot', 'Spring WebFlux', 'Quarkus', 'Angular', 'RxJS', 'React JS'],
       },
       { name: 'Messaging', items: ['Apache Kafka', 'RabbitMQ', 'Amazon SQS', 'AWS Kinesis'] },
       { name: 'Data', items: ['MySQL', 'Redis', 'DynamoDB', 'Amazon RDS'] },
       {
         name: 'Cloud & DevOps',
-        items: ['AWS', 'Docker', 'Kubernetes', 'Helm Charts', 'Terraform'],
+        items: ['AWS', 'Docker', 'Kubernetes', 'Helm Charts', 'Terraform', 'Google Tag Manager'],
       },
       {
         name: 'Architecture',
@@ -94,8 +94,19 @@ export const en = {
           'Consumed REST APIs with OpenFeign and WebClient over secure protocols.',
           'Implemented input sanitization and advanced security such as encryption and secret vaults.',
           'Developed reactive BFFs backed by Redis, delivering data fast to the front-end teams.',
+          'Built mobile-first front-end pages with Angular and RxJS, consuming data from the APIs.',
+          'Set up tracking tags with Google Tag Manager.',
         ],
-        stack: ['Java', 'Spring WebFlux', 'Resilience4j', 'OpenFeign', 'Redis', 'Mainframe'],
+        stack: [
+          'Java',
+          'Spring WebFlux',
+          'Resilience4j',
+          'OpenFeign',
+          'Redis',
+          'Mainframe',
+          'Angular',
+          'RxJS',
+        ],
       },
       {
         period: 'Jul 2024 — Mar 2026',

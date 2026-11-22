@@ -59,13 +59,13 @@ export const pt: Dictionary = {
       { name: 'Linguagens', items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL'] },
       {
         name: 'Frameworks',
-        items: ['Spring Boot', 'Spring WebFlux', 'Quarkus', 'Angular', 'React JS'],
+        items: ['Spring Boot', 'Spring WebFlux', 'Quarkus', 'Angular', 'RxJS', 'React JS'],
       },
       { name: 'Mensageria', items: ['Apache Kafka', 'RabbitMQ', 'Amazon SQS', 'AWS Kinesis'] },
       { name: 'Dados', items: ['MySQL', 'Redis', 'DynamoDB', 'Amazon RDS'] },
       {
         name: 'Cloud e DevOps',
-        items: ['AWS', 'Docker', 'Kubernetes', 'Helm Charts', 'Terraform'],
+        items: ['AWS', 'Docker', 'Kubernetes', 'Helm Charts', 'Terraform', 'Google Tag Manager'],
       },
       {
         name: 'Arquitetura',
@@ -95,8 +95,19 @@ export const pt: Dictionary = {
           'Consumo de APIs REST com OpenFeign e WebClient usando protocolos seguros.',
           'Implementação de sanitização de entradas e segurança avançada, como criptografia e cofres de segredos.',
           'Desenvolvimento de BFFs reativos com Redis, com entrega rápida de dados para os times de front-end.',
+          'Criação de páginas front-end mobile first com Angular e RxJS, consumindo dados das APIs.',
+          'Configuração de tags de rastreamento com Google Tag Manager.',
         ],
-        stack: ['Java', 'Spring WebFlux', 'Resilience4j', 'OpenFeign', 'Redis', 'Mainframe'],
+        stack: [
+          'Java',
+          'Spring WebFlux',
+          'Resilience4j',
+          'OpenFeign',
+          'Redis',
+          'Mainframe',
+          'Angular',
+          'RxJS',
+        ],
       },
       {
         period: 'jul 2024 — mar 2026',
