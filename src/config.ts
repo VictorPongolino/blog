@@ -1,7 +1,7 @@
 /** Language-independent site data. */
 export const site = {
   /** Public address of the site, without a trailing slash. Used for SEO tags and the sitemap. */
-  url: 'https://www.victorpongolino.com',
+  url: 'https://victorpongolino.com',
   name: 'Victor Hugo Pongolino',
   handle: 'victor.pongolino',
   /**

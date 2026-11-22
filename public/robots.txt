@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.victorpongolino.com/sitemap.xml
+Sitemap: https://victorpongolino.com/sitemap.xml
