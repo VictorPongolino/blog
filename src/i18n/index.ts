@@ -3,41 +3,32 @@ import { pt } from './pt';
 
 export type Locale = 'en' | 'pt';
 
-export const LOCALES: { code: Locale; label: string; htmlLang: string }[] = [
-  { code: 'en', label: 'EN', htmlLang: 'en' },
-  { code: 'pt', label: 'PT', htmlLang: 'pt-BR' },
+/** Each language is its own page: English at "/", Portuguese at "/pt/". */
+export const LOCALES: {
+  code: Locale;
+  label: string;
+  name: string;
+  htmlLang: string;
+  ogLocale: string;
+  path: string;
+}[] = [
+  { code: 'en', label: 'EN', name: 'English', htmlLang: 'en', ogLocale: 'en_US', path: '/' },
+  {
+    code: 'pt',
+    label: 'PT',
+    name: 'Português',
+    htmlLang: 'pt-BR',
+    ogLocale: 'pt_BR',
+    path: '/pt/',
+  },
 ];
 
+export const DEFAULT_LOCALE: Locale = 'en';
+
 const dictionaries: Record<Locale, Dictionary> = { en, pt };
-const STORAGE_KEY = 'locale';
-const DEFAULT_LOCALE: Locale = 'en';
-
-const isLocale = (value: unknown): value is Locale =>
-  LOCALES.some((locale) => locale.code === value);
-
-/** Priority: ?lang= in the URL, saved choice, browser language, English. */
-export function detectLocale(): Locale {
-  const fromUrl = new URLSearchParams(window.location.search).get('lang');
-  if (isLocale(fromUrl)) return fromUrl;
-
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (isLocale(saved)) return saved;
-  } catch {
-    // Storage unavailable (private mode, blocked) — fall through.
-  }
-
-  return navigator.language.toLowerCase().startsWith('pt') ? 'pt' : DEFAULT_LOCALE;
-}
-
-export function saveLocale(locale: Locale): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, locale);
-  } catch {
-    // Not persisted; the choice still applies to this visit.
-  }
-}
 
 export const getDictionary = (locale: Locale): Dictionary => dictionaries[locale];
+
+export const getLocale = (locale: Locale) => LOCALES.find((l) => l.code === locale)!;
 
 export type { Dictionary };

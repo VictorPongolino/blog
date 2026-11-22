@@ -1,6 +1,5 @@
 /**
  * English content (default language).
- * Anything marked "Placeholder" (photo, contact text) is meant to be replaced with real content.
  * Keep the same shape in pt.ts — TypeScript will complain if they drift.
  */
 export const en = {
@@ -18,7 +17,13 @@ export const en = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     language: 'Language',
+    primary: 'Primary',
+    mobile: 'Mobile menu',
+    home: 'Victor Hugo Pongolino — back to top',
     skipToContent: 'Skip to content',
+  },
+  a11y: {
+    newTab: '(opens in a new tab)',
   },
   hero: {
     greeting: "Hi, I'm",
@@ -28,7 +33,8 @@ export const en = {
     ctaPrimary: 'Get in touch',
     ctaSecondary: 'View projects',
     available: 'Open to new opportunities',
-    photoAlt: 'Portrait of Victor Hugo Pongolino (placeholder)',
+    photoAlt: 'Portrait of Victor Hugo Pongolino',
+    terminalLabel: 'Terminal showing my profile',
     terminal: {
       role: 'Senior Backend Developer',
       focus: 'Microservices, distributed systems, event-driven architecture',
@@ -170,9 +176,10 @@ export const en = {
   contact: {
     eyebrow: 'Contact',
     title: "Let's build something together",
-    text: 'Placeholder text — tell people what you are open to (new roles, freelance, mentoring) and the best way to reach you.',
+    text: 'Want to talk about backend engineering, distributed systems or a new opportunity? Send me a message — I will be glad to chat.',
     emailCta: 'Send me an email',
-    or: 'or find me on',
+    linkedinCta: 'Message me on LinkedIn',
+    or: 'You can also find me on',
   },
   footer: {
     rights: 'All rights reserved.',

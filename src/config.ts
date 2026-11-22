@@ -1,13 +1,22 @@
-/** Language-independent site data. Replace the placeholders with real values. */
+/** Language-independent site data. */
 export const site = {
+  /** Public address of the site, without a trailing slash. Used for SEO tags and the sitemap. */
+  url: 'https://www.victorpongolino.com',
   name: 'Victor Hugo Pongolino',
   handle: 'victor.pongolino',
-  /** Placeholder — swap for your real photo, e.g. /images/profile.jpg */
-  photo: '/images/profile-placeholder.svg',
+  /**
+   * Your photo. While EMPTY, no photo is shown anywhere.
+   * Put the file in public/images/ and set its path here, e.g. '/images/profile.jpg'
+   * (square, at least 400×400). It then appears in the hero and in link previews.
+   */
+  photo: '',
   /** Used for projects without an image of their own */
   projectImageFallback: '/images/project-placeholder.svg',
-  /** Placeholder — swap for your public contact address */
-  email: 'your.email@example.com',
+  /**
+   * Public contact address. While EMPTY, the contact button points to LinkedIn instead.
+   * Set it, e.g. 'me@example.com', to show a "Send me an email" button.
+   */
+  email: '',
   social: {
     github: 'https://github.com/VictorPongolino',
     linkedin: 'https://www.linkedin.com/in/victor-hugo-pongolino/',

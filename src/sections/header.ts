@@ -3,7 +3,7 @@ import { LOCALES, type Dictionary, type Locale } from '../i18n';
 import { projects } from '../projects';
 
 const ALL_SECTIONS = ['about', 'skills', 'experience', 'projects', 'contact'] as const;
-type SectionId = (typeof ALL_SECTIONS)[number];
+export type SectionId = (typeof ALL_SECTIONS)[number];
 
 /** Sections without content are left out of the page and the menu. */
 export const NAV_SECTIONS = ALL_SECTIONS.filter((id) => id !== 'projects' || projects.length > 0);
@@ -12,21 +12,26 @@ export const NAV_SECTIONS = ALL_SECTIONS.filter((id) => id !== 'projects' || pro
 export const sectionNumber = (id: SectionId): string =>
   String(NAV_SECTIONS.indexOf(id) + 1).padStart(2, '0');
 
+/** Real links between the language pages, so crawlers and no-JS visitors can follow them. */
 function languageSwitch(t: Dictionary, locale: Locale): string {
-  const buttons = LOCALES.map(({ code, label }) => {
+  const links = LOCALES.map(({ code, label, name, htmlLang, path }) => {
     const active = code === locale;
     return `
-      <button type="button" data-locale="${code}" aria-pressed="${active}"
-        class="rounded-md px-2.5 py-1.5 font-mono text-xs font-medium transition-colors ${
-          active ? 'bg-accent text-ink-950' : 'text-slate-400 hover:text-white'
-        }">${label}</button>`;
+      <li>
+        <a href="${path}" hreflang="${htmlLang}" lang="${htmlLang}" data-locale-link
+          ${active ? 'aria-current="true"' : ''}
+          class="block rounded-md px-2.5 py-1.5 font-mono text-xs font-medium transition-colors ${
+            active ? 'bg-accent text-ink-950' : 'text-slate-300 hover:text-white'
+          }"><span aria-hidden="true">${label}</span><span class="sr-only">${name}</span></a>
+      </li>`;
   }).join('');
 
   return `
-    <div role="group" aria-label="${t.nav.language}"
-      class="flex items-center gap-0.5 rounded-lg border border-white/10 bg-ink-900 p-0.5">
-      ${buttons}
-    </div>`;
+    <nav aria-label="${t.nav.language}">
+      <ul class="flex items-center gap-0.5 rounded-lg border border-white/10 bg-ink-900 p-0.5">
+        ${links}
+      </ul>
+    </nav>`;
 }
 
 export function header(t: Dictionary, locale: Locale): string {
@@ -35,7 +40,7 @@ export function header(t: Dictionary, locale: Locale): string {
       (id) => `
         <li>
           <a href="#${id}" data-nav-link="${id}" class="${className}">
-            <span class="text-accent">${sectionNumber(id)}.</span> ${t.nav[id]}
+            <span class="text-accent" aria-hidden="true">${sectionNumber(id)}.</span> ${t.nav[id]}
           </a>
         </li>`,
     ).join('');
@@ -47,13 +52,13 @@ export function header(t: Dictionary, locale: Locale): string {
     </a>
     <header class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink-950/80 backdrop-blur-md">
       <div class="container-page flex h-16 items-center justify-between gap-4">
-        <a href="#top" class="font-mono text-base font-semibold text-white">
-          <span class="text-accent">~/</span>victor<span class="cursor-blink text-accent">_</span>
+        <a href="#top" aria-label="${t.nav.home}" class="font-mono text-base font-semibold text-white">
+          <span aria-hidden="true"><span class="text-accent">~/</span>victor<span class="cursor-blink text-accent">_</span></span>
         </a>
 
-        <nav aria-label="Primary" class="hidden md:block">
+        <nav aria-label="${t.nav.primary}" class="hidden md:block">
           <ul class="flex items-center gap-6 font-mono text-sm">
-            ${links('text-slate-400 transition-colors hover:text-white data-[active=true]:text-white')}
+            ${links('text-slate-300 transition-colors hover:text-white aria-[current]:text-white')}
           </ul>
         </nav>
 
@@ -68,7 +73,7 @@ export function header(t: Dictionary, locale: Locale): string {
         </div>
       </div>
 
-      <nav id="mobile-menu" aria-label="Mobile" hidden class="border-t border-white/5 bg-ink-950 md:hidden">
+      <nav id="mobile-menu" aria-label="${t.nav.mobile}" hidden class="border-t border-white/5 bg-ink-950 md:hidden">
         <ul class="container-page flex flex-col py-3 font-mono text-base">
           ${links('block rounded-lg px-2 py-3 text-slate-300 hover:bg-white/5 hover:text-white')}
         </ul>

@@ -2,7 +2,6 @@ import type { Dictionary } from './en';
 
 /**
  * Conteúdo em português.
- * O que estiver marcado como "Placeholder" (foto, texto de contato) deve ser substituído por conteúdo real.
  */
 export const pt: Dictionary = {
   meta: {
@@ -19,7 +18,13 @@ export const pt: Dictionary = {
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
     language: 'Idioma',
+    primary: 'Principal',
+    mobile: 'Menu móvel',
+    home: 'Victor Hugo Pongolino — voltar ao topo',
     skipToContent: 'Ir para o conteúdo',
+  },
+  a11y: {
+    newTab: '(abre em nova aba)',
   },
   hero: {
     greeting: 'Olá, eu sou',
@@ -29,7 +34,8 @@ export const pt: Dictionary = {
     ctaPrimary: 'Entre em contato',
     ctaSecondary: 'Ver projetos',
     available: 'Aberto a novas oportunidades',
-    photoAlt: 'Retrato de Victor Hugo Pongolino (placeholder)',
+    photoAlt: 'Retrato de Victor Hugo Pongolino',
+    terminalLabel: 'Terminal mostrando meu perfil',
     terminal: {
       role: 'Desenvolvedor Backend Sênior',
       focus: 'Microsserviços, sistemas distribuídos, arquitetura orientada a eventos',
@@ -171,9 +177,10 @@ export const pt: Dictionary = {
   contact: {
     eyebrow: 'Contato',
     title: 'Vamos construir algo juntos',
-    text: 'Texto de exemplo (placeholder) — diga às pessoas no que você tem interesse (novas vagas, freelas, mentoria) e a melhor forma de falar com você.',
+    text: 'Quer conversar sobre engenharia backend, sistemas distribuídos ou uma nova oportunidade? Envie uma mensagem — será um prazer conversar.',
     emailCta: 'Envie um e-mail',
-    or: 'ou me encontre em',
+    linkedinCta: 'Fale comigo no LinkedIn',
+    or: 'Você também me encontra em',
   },
   footer: {
     rights: 'Todos os direitos reservados.',
