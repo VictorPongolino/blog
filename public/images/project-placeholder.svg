@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Project image placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#082f38"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#22d3ee" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect width="800" height="450" fill="url(#grid)"/>
+  <g fill="none" stroke="#34d399" stroke-opacity=".6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M360 190l-36 35 36 35M440 190l36 35-36 35M412 175l-24 100"/>
+  </g>
+  <text x="400" y="330" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#94a3b8">project-image.png · 800×450</text>
+</svg>

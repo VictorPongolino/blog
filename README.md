@@ -1,59 +1,57 @@
-# Blog
+# Portfolio — Victor Hugo Pongolino
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+Personal portfolio of a Senior Backend Developer. Single page, mobile first, English and Portuguese.
 
-## Development server
+Built with [Vite](https://vite.dev/), TypeScript and [Tailwind CSS](https://tailwindcss.com/) — no UI framework.
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Commands
 
 ```bash
-ng generate component component-name
+npm install
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
 ```bash
-ng generate --help
+npm run dev
 ```
-
-## Building
-
-To build the project run:
 
 ```bash
-ng build
+npm run build
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
 ```bash
-ng test
+npm run preview
 ```
 
-## Running end-to-end tests
+## Replacing the placeholders
 
-For end-to-end (e2e) testing, run:
+| What                                   | Where                                             |
+| -------------------------------------- | ------------------------------------------------- |
+| Texts (English)                        | `src/i18n/en.ts`                                  |
+| Texts (Portuguese)                     | `src/i18n/pt.ts`                                  |
+| Photo, e-mail, social and project URLs | `src/config.ts`                                   |
+| Images                                 | `public/images/` (then update `src/config.ts`)    |
+| Colors and fonts                       | `@theme` block in `src/style.css`                 |
 
-```bash
-ng e2e
+`pt.ts` is typed against `en.ts`, so the build fails if a translation is missing.
+
+## Languages
+
+The language is chosen in this order: `?lang=en|pt` in the URL, the visitor's saved choice,
+the browser language, then English. To add a language, create a dictionary in `src/i18n/` and
+register it in `src/i18n/index.ts`.
+
+## Structure
+
+```
+index.html            entry page
+src/main.ts           rendering, language switch, menu, scroll effects
+src/config.ts         language-independent data (links, images)
+src/i18n/             dictionaries and locale detection
+src/sections/         one function per page section
+content/articles/     articles from the previous blog (not published)
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Deploy
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Pushing to `master` builds the site and publishes `dist/` to GitHub Pages
+(`.github/workflows/deploy-pages.yml`).
