@@ -7,7 +7,7 @@ export const pt: Dictionary = {
   meta: {
     title: 'Victor Hugo Pongolino — Desenvolvedor Backend Sênior',
     description:
-      'Portfólio de Victor Hugo Pongolino, Desenvolvedor Backend Sênior construindo microsserviços escaláveis com Java e Spring.',
+      'Portfólio de Victor Hugo Pongolino, Desenvolvedor Backend Sênior que desenvolve microsserviços escaláveis com Java e Spring.',
   },
   nav: {
     about: 'Sobre',
@@ -30,7 +30,7 @@ export const pt: Dictionary = {
     greeting: 'Olá, eu sou',
     role: 'Desenvolvedor Backend Sênior',
     tagline:
-      'Construo microsserviços escaláveis com Java e Spring, com foco em sistemas distribuídos e arquiteturas orientadas a eventos.',
+      'Desenvolvo microsserviços escaláveis com Java e Spring, com foco em sistemas distribuídos e arquiteturas orientadas a eventos.',
     ctaPrimary: 'Entre em contato',
     ctaSecondary: 'Ver projetos',
     available: 'Aberto a novas oportunidades',
@@ -47,13 +47,13 @@ export const pt: Dictionary = {
     title: 'Um pouco sobre mim',
     paragraphs: [
       'Sou Engenheiro de Software Backend com mais de 4 anos de experiência em Java e Spring, especializado na construção de microsserviços escaláveis.',
-      'Trabalho com sistemas distribuídos e arquiteturas orientadas a eventos, utilizando tecnologias de mensageria como RabbitMQ, Apache Kafka, Amazon SQS e AWS Kinesis. Hoje, na Avanade, construo serviços reativos com Spring WebFlux para uma instituição bancária. Na IBM, contribuí para serviços backend de processamento de dados em sistemas de RH, dando suporte a fluxos de integração de dados. Antes disso, trabalhei em um projeto da BMW, entregando aplicações Java Quarkus escaláveis em um ambiente DevOps.',
+      'Trabalho com sistemas distribuídos e arquiteturas orientadas a eventos, utilizando tecnologias de mensageria como RabbitMQ, Apache Kafka, Amazon SQS e AWS Kinesis. Hoje, na Avanade, desenvolvo serviços reativos com Spring WebFlux para uma instituição bancária. Na IBM, contribuí para serviços backend de processamento de dados em sistemas de RH, dando suporte a fluxos de integração de dados. Antes disso, trabalhei em um projeto da BMW, entregando aplicações Java Quarkus escaláveis em um ambiente DevOps.',
       'Sou fluente em inglês e tenho experiência em colaboração com equipes internacionais.',
     ],
     stats: [
       { value: '4+', label: 'Anos de experiência' },
       { value: '70%', label: 'Menos tempo em exclusões em massa na Elo7' },
-      { value: '4', label: 'Plataformas de mensageria em produção' },
+      { value: '3', label: 'Clientes corporativos: IBM, BMW e um banco' },
       { value: 'EN · PT', label: 'Idiomas de trabalho' },
     ],
   },
@@ -96,7 +96,7 @@ export const pt: Dictionary = {
         description:
           'Serviços backend reativos em Java com Spring WebFlux para uma instituição bancária.',
         highlights: [
-          'Construção de camadas de resiliência com Resilience4j: circuit breakers, retries e bulkheads.',
+          'Desenvolvimento de camadas de resiliência com Resilience4j: circuit breakers, retries e bulkheads.',
           'Integração dos serviços backend com o mainframe.',
           'Consumo de APIs REST com OpenFeign e WebClient usando protocolos seguros.',
           'Implementação de sanitização de entradas e segurança avançada, como criptografia e cofres de segredos.',

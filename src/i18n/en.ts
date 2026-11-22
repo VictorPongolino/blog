@@ -52,7 +52,7 @@ export const en = {
     stats: [
       { value: '4+', label: 'Years of experience' },
       { value: '70%', label: 'Less time on bulk removals at Elo7' },
-      { value: '4', label: 'Messaging platforms in production' },
+      { value: '3', label: 'Enterprise clients: IBM, BMW and a bank' },
       { value: 'EN · PT', label: 'Working languages' },
     ],
   },
