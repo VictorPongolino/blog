@@ -43,6 +43,8 @@ jobs:
           test -s dist/index.html
           test -s dist/pt/index.html
           test -s dist/sitemap.xml
+          test -s dist/robots.txt
+          test -s dist/favicon.ico
           test -s dist/CNAME
 
       - name: Upload GitHub Pages artifact

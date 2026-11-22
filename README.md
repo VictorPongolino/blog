@@ -27,14 +27,15 @@ npm run preview
 
 ## Where to change things
 
-| What                                    | Where                             |
-| --------------------------------------- | --------------------------------- |
-| Texts (English)                         | `src/i18n/en.ts`                  |
-| Texts (Portuguese)                      | `src/i18n/pt.ts`                  |
-| Photo, e-mail, social links, site URL   | `src/config.ts`                   |
-| Projects (empty list hides the section) | `src/projects.ts`                 |
-| Images                                  | `public/images/`                  |
-| Colors and fonts                        | `@theme` block in `src/style.css` |
+| What                                    | Where                              |
+| --------------------------------------- | ---------------------------------- |
+| Texts (English)                         | `src/i18n/en.ts`                   |
+| Texts (Portuguese)                      | `src/i18n/pt.ts`                   |
+| Photo, e-mail, social links, site URL   | `src/config.ts`                    |
+| Link preview image                      | `public/images/social-preview.png` |
+| Projects (empty list hides the section) | `src/projects.ts`                  |
+| Images                                  | `public/images/`                   |
+| Colors and fonts                        | `@theme` block in `src/style.css`  |
 
 `pt.ts` is typed against `en.ts`, so the build fails if a translation is missing.
 
@@ -51,7 +52,10 @@ npm run preview
 
 - Each language has its own URL with `canonical` and `hreflang` links, Open Graph tags and
   schema.org `Person` data, all generated in `src/render.ts`.
-- `sitemap.xml` is generated on build; `robots.txt` is in `public/`.
+- `sitemap.xml` and `robots.txt` are generated on build from `url` in `src/config.ts`. That URL
+  must be the address the site is served from (the custom domain in the Pages settings and
+  `public/CNAME`); an address that only redirects there makes every canonical link wrong.
+- Link previews use `public/images/social-preview.png` (1200×630) until a photo is set.
 - Semantic landmarks, labelled sections, a skip link, keyboard-friendly menu and reduced-motion
   support.
 

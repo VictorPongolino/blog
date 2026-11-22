@@ -59,10 +59,24 @@ function head(locale: Locale): string {
   const ogAlternates = LOCALES.filter((l) => l.code !== locale)
     .map((l) => `<meta property="og:locale:alternate" content="${l.ogLocale}" />`)
     .join('\n    ');
-  const image = site.photo
-    ? `<meta property="og:image" content="${absoluteUrl(site.photo)}" />
-    <meta property="og:image:alt" content="${esc(t.hero.photoAlt)}" />`
-    : '';
+  // Link previews use the photo once it is set, and the generic preview image until then.
+  const preview = site.photo
+    ? { url: absoluteUrl(site.photo), alt: esc(t.hero.photoAlt), size: [] }
+    : {
+        url: absoluteUrl(site.socialImage.path),
+        alt: title,
+        size: [
+          `<meta property="og:image:width" content="${site.socialImage.width}" />`,
+          `<meta property="og:image:height" content="${site.socialImage.height}" />`,
+        ],
+      };
+  const image = [
+    `<meta property="og:image" content="${preview.url}" />`,
+    ...preview.size,
+    `<meta property="og:image:alt" content="${preview.alt}" />`,
+    `<meta name="twitter:image" content="${preview.url}" />`,
+    `<meta name="twitter:image:alt" content="${preview.alt}" />`,
+  ].join('\n    ');
 
   return `<title>${title}</title>
     <meta name="description" content="${description}" />
@@ -73,6 +87,7 @@ function head(locale: Locale): string {
     <link rel="canonical" href="${url}" />
     ${alternates}
     <link rel="alternate" hreflang="x-default" href="${absoluteUrl(getLocale(DEFAULT_LOCALE).path)}" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="profile" />
     <meta property="og:site_name" content="${esc(site.name)}" />
@@ -82,7 +97,7 @@ function head(locale: Locale): string {
     <meta property="og:locale" content="${current.ogLocale}" />
     ${ogAlternates}
     ${image}
-    <meta name="twitter:card" content="${site.photo ? 'summary_large_image' : 'summary'}" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
     <script type="application/ld+json">${structuredData(locale)}</script>`;
@@ -124,5 +139,13 @@ ${links}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
+`;
+}
+
+export function renderRobots(): string {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${absoluteUrl('/sitemap.xml')}
 `;
 }
