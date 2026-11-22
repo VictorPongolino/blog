@@ -1,13 +1,13 @@
 /**
  * English content (default language).
- * Everything marked "Placeholder" is meant to be replaced with real content.
+ * Anything marked "Placeholder" (photo, projects, contact text) is meant to be replaced with real content.
  * Keep the same shape in pt.ts — TypeScript will complain if they drift.
  */
 export const en = {
   meta: {
     title: 'Victor Hugo Pongolino — Senior Backend Developer',
     description:
-      'Portfolio of Victor Hugo Pongolino, Senior Backend Developer building reliable, scalable distributed systems.',
+      'Portfolio of Victor Hugo Pongolino, Senior Backend Developer building scalable microservices with Java and Spring.',
   },
   nav: {
     about: 'About',
@@ -24,54 +24,48 @@ export const en = {
     greeting: "Hi, I'm",
     role: 'Senior Backend Developer',
     tagline:
-      'Placeholder tagline — I design and build reliable, scalable backend systems, from APIs to event-driven microservices.',
+      'I build scalable microservices with Java and Spring, with a focus on distributed systems and event-driven architectures.',
     ctaPrimary: 'Get in touch',
     ctaSecondary: 'View projects',
     available: 'Open to new opportunities',
     photoAlt: 'Portrait of Victor Hugo Pongolino (placeholder)',
     terminal: {
       role: 'Senior Backend Developer',
-      focus: 'Distributed systems, APIs, reactive programming',
-      location: 'Brazil (placeholder)',
+      focus: 'Microservices, distributed systems, event-driven architecture',
+      location: 'Guarulhos, São Paulo, Brazil',
     },
   },
   about: {
     eyebrow: 'About',
     title: 'A little about me',
     paragraphs: [
-      'Placeholder paragraph — introduce yourself: who you are, how long you have been working with backend development and what kind of problems you enjoy solving.',
-      'Placeholder paragraph — describe your approach: clean architecture, testing, observability, performance, mentoring, and how you collaborate with product and other teams.',
-      'Placeholder paragraph — something personal: what you study, write or build outside of work.',
+      'I am a Backend Software Engineer with more than 4 years of experience in Java and Spring, specialized in building scalable microservices.',
+      'I work with distributed systems and event-driven architectures, using messaging technologies such as RabbitMQ, Apache Kafka, Amazon SQS and AWS Kinesis. At IBM I contributed to backend services that process HR data and support data integration flows. Before that, I worked on a BMW project delivering scalable Java Quarkus applications in a DevOps environment.',
+      'I am fluent in English and used to collaborating with international teams.',
     ],
     stats: [
-      { value: 'X+', label: 'Years of experience' },
-      { value: 'XX+', label: 'Projects delivered' },
-      { value: 'XX+', label: 'Services in production' },
-      { value: 'XX', label: 'Articles & talks' },
+      { value: '4+', label: 'Years of experience' },
+      { value: '70%', label: 'Less time on bulk removals at Elo7' },
+      { value: '4', label: 'Messaging platforms in production' },
+      { value: 'EN · PT', label: 'Working languages' },
     ],
   },
   skills: {
     eyebrow: 'Skills',
     title: 'Technologies I work with',
-    subtitle: 'Placeholder list — adjust the groups and items to match your real stack.',
+    subtitle: 'The stack I use to design, ship and operate backend systems.',
     groups: [
-      { name: 'Languages', items: ['Java', 'Kotlin', 'TypeScript', 'SQL'] },
-      {
-        name: 'Frameworks',
-        items: ['Spring Boot', 'Spring WebFlux', 'Project Reactor', 'Quarkus'],
-      },
-      { name: 'Data & Messaging', items: ['PostgreSQL', 'MongoDB', 'Redis', 'Kafka', 'RabbitMQ'] },
+      { name: 'Languages', items: ['Java', 'Python', 'SQL'] },
+      { name: 'Frameworks', items: ['Spring Boot', 'Quarkus', 'React JS'] },
+      { name: 'Messaging', items: ['Apache Kafka', 'RabbitMQ', 'Amazon SQS', 'AWS Kinesis'] },
+      { name: 'Data', items: ['MySQL', 'Redis', 'DynamoDB', 'Amazon RDS'] },
       {
         name: 'Cloud & DevOps',
-        items: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'],
+        items: ['AWS', 'Docker', 'Kubernetes', 'Helm Charts', 'Terraform'],
       },
       {
         name: 'Architecture',
-        items: ['Microservices', 'Event-driven', 'REST', 'gRPC', 'DDD'],
-      },
-      {
-        name: 'Quality & Observability',
-        items: ['JUnit', 'Testcontainers', 'Grafana', 'Prometheus', 'OpenTelemetry'],
+        items: ['Microservices', 'Distributed systems', 'Event-driven'],
       },
     ],
   },
@@ -80,36 +74,54 @@ export const en = {
     title: "Where I've worked",
     items: [
       {
-        period: '20XX — Present',
-        role: 'Senior Backend Developer',
-        company: 'Company name (placeholder)',
+        period: 'Jul 2024 — Mar 2026',
+        role: 'Backend Software Engineer',
+        company: 'Experis · Client: IBM',
         description:
-          'Placeholder description — summarize your responsibilities and the systems you own in one or two sentences.',
+          'Support for critical HR data processing pipelines (L1, L2 and L3) and the backend services behind them.',
         highlights: [
-          'Placeholder achievement with a measurable result (e.g. reduced latency by XX%).',
-          'Placeholder achievement about architecture, scale or reliability.',
+          'Handled Sensitive Personal Information (SPII), strictly following security and data protection best practices.',
+          'Investigated and debugged issues in distributed systems, keeping availability and reliability high.',
+          'Analyzed logs, monitored performance and resolved incidents in production environments.',
+          'Worked with development teams on root cause analysis and permanent fixes, preventing recurring failures.',
         ],
-        stack: ['Java', 'Spring Boot', 'Kafka', 'AWS'],
+        stack: ['Data pipelines', 'Distributed systems', 'Incident response', 'SPII'],
       },
       {
-        period: '20XX — 20XX',
-        role: 'Backend Developer',
-        company: 'Company name (placeholder)',
+        period: 'Dec 2023 — May 2024',
+        role: 'DevOps Engineer',
+        company: 'ília · Client: BMW · Remote',
         description:
-          'Placeholder description — summarize your responsibilities and the systems you worked on.',
+          'Built distributed Java microservices with Quarkus and managed their cloud infrastructure, working with international teams.',
         highlights: [
-          'Placeholder achievement with a measurable result.',
-          'Placeholder achievement about a feature or migration you led.',
+          'Discussed and defined architectures and systems together with international teams.',
+          'Managed infrastructure with Terraform, Kubernetes and Docker.',
+          'Implemented AWS solutions with EC2, S3, RDS, DynamoDB, EKS, ECS, SQS and Kinesis.',
+          'Read, documented and implemented RFC 8030, applying security best practices to communication between devices and vehicles.',
         ],
-        stack: ['Java', 'PostgreSQL', 'RabbitMQ', 'Docker'],
+        stack: ['Java', 'Quarkus', 'AWS', 'Kubernetes', 'Terraform', 'Docker'],
       },
       {
-        period: '20XX — 20XX',
-        role: 'Junior Developer',
-        company: 'Company name (placeholder)',
-        description: 'Placeholder description — where it all started and what you learned.',
-        highlights: ['Placeholder achievement.'],
-        stack: ['Java', 'SQL', 'Git'],
+        period: 'Jan 2021 — Oct 2023',
+        role: 'Backend Software Engineer',
+        company: 'Elo7 · Remote',
+        description: 'Development, maintenance and operation of marketplace applications.',
+        highlights: [
+          'Built a system that cut the time needed to bulk-remove illegal products from the marketplace by 70%.',
+          'Automated tooling that let the OPS team solve problems on their own.',
+          'Helped split monolithic processes into distributed systems.',
+          'Raised engineering productivity by identifying features that reduce manual work.',
+          'Took part in on-call rotations and supported OPS with investigations, fixes and documentation.',
+        ],
+        stack: ['Java', 'Spring', 'Microservices', 'On-call'],
+      },
+    ],
+    educationTitle: 'Education',
+    education: [
+      {
+        period: '2018 — 2021',
+        degree: "Bachelor's degree",
+        school: 'Universidade São Judas Tadeu, São Paulo',
       },
     ],
   },

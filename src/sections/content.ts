@@ -79,6 +79,22 @@ export function experience(t: Dictionary): string {
             )
             .join('')}
         </ol>
+
+        <h3 class="mt-14 mb-5 font-mono text-sm font-semibold text-white" data-reveal>
+          <span class="text-accent">&gt;</span> ${t.experience.educationTitle}
+        </h3>
+        <ul class="grid gap-4 sm:grid-cols-2">
+          ${t.experience.education
+            .map(
+              (item) => `
+            <li class="card p-5" data-reveal>
+              <p class="font-mono text-xs text-accent sm:text-sm">${item.period}</p>
+              <p class="mt-1 text-lg font-semibold text-white">${item.degree}</p>
+              <p class="text-slate-400">${item.school}</p>
+            </li>`,
+            )
+            .join('')}
+        </ul>
       </div>
     </section>`;
 }

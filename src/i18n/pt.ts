@@ -2,13 +2,13 @@ import type { Dictionary } from './en';
 
 /**
  * Conteúdo em português.
- * Tudo marcado como "Placeholder" deve ser substituído por conteúdo real.
+ * O que estiver marcado como "Placeholder" (foto, projetos, texto de contato) deve ser substituído por conteúdo real.
  */
 export const pt: Dictionary = {
   meta: {
     title: 'Victor Hugo Pongolino — Desenvolvedor Backend Sênior',
     description:
-      'Portfólio de Victor Hugo Pongolino, Desenvolvedor Backend Sênior construindo sistemas distribuídos confiáveis e escaláveis.',
+      'Portfólio de Victor Hugo Pongolino, Desenvolvedor Backend Sênior construindo microsserviços escaláveis com Java e Spring.',
   },
   nav: {
     about: 'Sobre',
@@ -25,57 +25,48 @@ export const pt: Dictionary = {
     greeting: 'Olá, eu sou',
     role: 'Desenvolvedor Backend Sênior',
     tagline:
-      'Frase de exemplo (placeholder) — projeto e construo sistemas backend confiáveis e escaláveis, de APIs a microsserviços orientados a eventos.',
+      'Construo microsserviços escaláveis com Java e Spring, com foco em sistemas distribuídos e arquiteturas orientadas a eventos.',
     ctaPrimary: 'Entre em contato',
     ctaSecondary: 'Ver projetos',
     available: 'Aberto a novas oportunidades',
     photoAlt: 'Retrato de Victor Hugo Pongolino (placeholder)',
     terminal: {
       role: 'Desenvolvedor Backend Sênior',
-      focus: 'Sistemas distribuídos, APIs, programação reativa',
-      location: 'Brasil (placeholder)',
+      focus: 'Microsserviços, sistemas distribuídos, arquitetura orientada a eventos',
+      location: 'Guarulhos, São Paulo, Brasil',
     },
   },
   about: {
     eyebrow: 'Sobre',
     title: 'Um pouco sobre mim',
     paragraphs: [
-      'Parágrafo de exemplo (placeholder) — apresente-se: quem você é, há quanto tempo trabalha com desenvolvimento backend e que tipo de problema gosta de resolver.',
-      'Parágrafo de exemplo (placeholder) — descreva sua forma de trabalhar: arquitetura limpa, testes, observabilidade, performance, mentoria e como colabora com produto e outros times.',
-      'Parágrafo de exemplo (placeholder) — algo pessoal: o que você estuda, escreve ou constrói fora do trabalho.',
+      'Sou Engenheiro de Software Backend com mais de 4 anos de experiência em Java e Spring, especializado na construção de microsserviços escaláveis.',
+      'Trabalho com sistemas distribuídos e arquiteturas orientadas a eventos, utilizando tecnologias de mensageria como RabbitMQ, Apache Kafka, Amazon SQS e AWS Kinesis. Na IBM, contribuí para serviços backend de processamento de dados em sistemas de RH, dando suporte a fluxos de integração de dados. Antes disso, trabalhei em um projeto da BMW, entregando aplicações Java Quarkus escaláveis em um ambiente DevOps.',
+      'Sou fluente em inglês e tenho experiência em colaboração com equipes internacionais.',
     ],
     stats: [
-      { value: 'X+', label: 'Anos de experiência' },
-      { value: 'XX+', label: 'Projetos entregues' },
-      { value: 'XX+', label: 'Serviços em produção' },
-      { value: 'XX', label: 'Artigos e palestras' },
+      { value: '4+', label: 'Anos de experiência' },
+      { value: '70%', label: 'Menos tempo em exclusões em massa na Elo7' },
+      { value: '4', label: 'Plataformas de mensageria em produção' },
+      { value: 'EN · PT', label: 'Idiomas de trabalho' },
     ],
   },
   skills: {
     eyebrow: 'Habilidades',
     title: 'Tecnologias com que trabalho',
-    subtitle: 'Lista de exemplo (placeholder) — ajuste os grupos e itens para refletir sua stack.',
+    subtitle: 'A stack que uso para projetar, entregar e operar sistemas backend.',
     groups: [
-      { name: 'Linguagens', items: ['Java', 'Kotlin', 'TypeScript', 'SQL'] },
-      {
-        name: 'Frameworks',
-        items: ['Spring Boot', 'Spring WebFlux', 'Project Reactor', 'Quarkus'],
-      },
-      {
-        name: 'Dados e Mensageria',
-        items: ['PostgreSQL', 'MongoDB', 'Redis', 'Kafka', 'RabbitMQ'],
-      },
+      { name: 'Linguagens', items: ['Java', 'Python', 'SQL'] },
+      { name: 'Frameworks', items: ['Spring Boot', 'Quarkus', 'React JS'] },
+      { name: 'Mensageria', items: ['Apache Kafka', 'RabbitMQ', 'Amazon SQS', 'AWS Kinesis'] },
+      { name: 'Dados', items: ['MySQL', 'Redis', 'DynamoDB', 'Amazon RDS'] },
       {
         name: 'Cloud e DevOps',
-        items: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'],
+        items: ['AWS', 'Docker', 'Kubernetes', 'Helm Charts', 'Terraform'],
       },
       {
         name: 'Arquitetura',
-        items: ['Microsserviços', 'Orientada a eventos', 'REST', 'gRPC', 'DDD'],
-      },
-      {
-        name: 'Qualidade e Observabilidade',
-        items: ['JUnit', 'Testcontainers', 'Grafana', 'Prometheus', 'OpenTelemetry'],
+        items: ['Microsserviços', 'Sistemas distribuídos', 'Orientada a eventos'],
       },
     ],
   },
@@ -84,37 +75,54 @@ export const pt: Dictionary = {
     title: 'Onde já trabalhei',
     items: [
       {
-        period: '20XX — Atual',
-        role: 'Desenvolvedor Backend Sênior',
-        company: 'Nome da empresa (placeholder)',
+        period: 'jul 2024 — mar 2026',
+        role: 'Backend Software Engineer',
+        company: 'Experis · Cliente: IBM',
         description:
-          'Descrição de exemplo (placeholder) — resuma suas responsabilidades e os sistemas sob sua responsabilidade em uma ou duas frases.',
+          'Suporte a pipelines críticos de processamento de dados de RH (L1, L2 e L3) e aos serviços backend por trás deles.',
         highlights: [
-          'Conquista de exemplo com resultado mensurável (ex.: redução de XX% na latência).',
-          'Conquista de exemplo sobre arquitetura, escala ou confiabilidade.',
+          'Atuação com Informações Pessoais Sensíveis (SPII), seguindo rigorosamente as melhores práticas de segurança e proteção de dados.',
+          'Investigação e depuração de problemas em sistemas distribuídos, garantindo alta disponibilidade e confiabilidade.',
+          'Análise de logs, monitoramento de desempenho e resolução de incidentes em ambientes produtivos.',
+          'Colaboração com equipes de desenvolvimento na identificação de causa raiz e em correções definitivas, prevenindo falhas recorrentes.',
         ],
-        stack: ['Java', 'Spring Boot', 'Kafka', 'AWS'],
+        stack: ['Pipelines de dados', 'Sistemas distribuídos', 'Resposta a incidentes', 'SPII'],
       },
       {
-        period: '20XX — 20XX',
-        role: 'Desenvolvedor Backend',
-        company: 'Nome da empresa (placeholder)',
+        period: 'dez 2023 — mai 2024',
+        role: 'DevOps Engineer',
+        company: 'ília · Cliente: BMW · Remoto',
         description:
-          'Descrição de exemplo (placeholder) — resuma suas responsabilidades e os sistemas em que trabalhou.',
+          'Desenvolvimento de microsserviços Java distribuídos com Quarkus e gestão da infraestrutura em nuvem, em colaboração com equipes internacionais.',
         highlights: [
-          'Conquista de exemplo com resultado mensurável.',
-          'Conquista de exemplo sobre uma funcionalidade ou migração que você liderou.',
+          'Discussão e definição de arquiteturas e sistemas com equipes internacionais.',
+          'Gestão de infraestrutura com Terraform, Kubernetes e Docker.',
+          'Implementação de soluções na AWS com EC2, S3, RDS, DynamoDB, EKS, ECS, SQS e Kinesis.',
+          'Leitura, documentação e implementação da RFC 8030, aplicando boas práticas de segurança na comunicação entre dispositivos e veículos.',
         ],
-        stack: ['Java', 'PostgreSQL', 'RabbitMQ', 'Docker'],
+        stack: ['Java', 'Quarkus', 'AWS', 'Kubernetes', 'Terraform', 'Docker'],
       },
       {
-        period: '20XX — 20XX',
-        role: 'Desenvolvedor Júnior',
-        company: 'Nome da empresa (placeholder)',
-        description:
-          'Descrição de exemplo (placeholder) — onde tudo começou e o que você aprendeu.',
-        highlights: ['Conquista de exemplo.'],
-        stack: ['Java', 'SQL', 'Git'],
+        period: 'jan 2021 — out 2023',
+        role: 'Backend Software Engineer',
+        company: 'Elo7 · Remoto',
+        description: 'Desenvolvimento, manutenção e operação de aplicações do marketplace.',
+        highlights: [
+          'Desenvolvimento de um sistema que reduziu em 70% o tempo necessário para a exclusão em massa de produtos ilegais do marketplace.',
+          'Automatização de ferramentas que permitiu ao time de OPS resolver problemas de forma autônoma.',
+          'Contribuição para a separação de processos de sistemas monolíticos em sistemas distribuídos.',
+          'Aumento da produtividade da equipe de engenharia, identificando features para reduzir cargas manuais.',
+          'Participação em plantões e apoio ao time de OPS em investigações, resoluções e documentação.',
+        ],
+        stack: ['Java', 'Spring', 'Microsserviços', 'Plantão'],
+      },
+    ],
+    educationTitle: 'Formação',
+    education: [
+      {
+        period: '2018 — 2021',
+        degree: 'Bacharelado',
+        school: 'Universidade São Judas Tadeu, São Paulo',
       },
     ],
   },
