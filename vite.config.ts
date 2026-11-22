@@ -28,7 +28,9 @@ function prerender(): Plugin {
         { path: '/robots.txt', type: 'text/plain; charset=utf-8', render: renderRobots },
       ];
       for (const file of generated) {
-        server.middlewares.use(file.path, (_req, res) => {
+        server.middlewares.use(file.path, (req, res, next) => {
+          // The mount also matches longer paths such as "/robots.txt/x"; only answer the exact one.
+          if (req.originalUrl?.split('?')[0] !== file.path) return next();
           res.setHeader('Content-Type', file.type);
           res.end(file.render());
         });
