@@ -1,59 +1,75 @@
-# Blog
+# Portfolio — Victor Hugo Pongolino
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+Personal portfolio of a Senior Backend Developer. Single page, mobile first, in English (`/`) and
+Portuguese (`/pt/`).
 
-## Development server
+Built with [Vite](https://vite.dev/), TypeScript and [Tailwind CSS](https://tailwindcss.com/) — no
+UI framework. The pages are generated as plain HTML at build time, so search engines and visitors
+without JavaScript get the full content.
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Commands
 
 ```bash
-ng generate component component-name
+npm install
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
 ```bash
-ng generate --help
+npm run dev
 ```
-
-## Building
-
-To build the project run:
 
 ```bash
-ng build
+npm run build
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
 ```bash
-ng test
+npm run preview
 ```
 
-## Running end-to-end tests
+## Where to change things
 
-For end-to-end (e2e) testing, run:
+| What                                    | Where                             |
+| --------------------------------------- | --------------------------------- |
+| Texts (English)                         | `src/i18n/en.ts`                  |
+| Texts (Portuguese)                      | `src/i18n/pt.ts`                  |
+| Photo, e-mail, social links, site URL   | `src/config.ts`                   |
+| Projects (empty list hides the section) | `src/projects.ts`                 |
+| Images                                  | `public/images/`                  |
+| Colors and fonts                        | `@theme` block in `src/style.css` |
 
-```bash
-ng e2e
+`pt.ts` is typed against `en.ts`, so the build fails if a translation is missing.
+
+### Switches that turn content on
+
+- **Photo** — set `photo` in `src/config.ts` (e.g. `'/images/profile.jpg'`). While it is empty no
+  photo is rendered; once set it appears in the hero and in link previews.
+- **E-mail** — set `email` in `src/config.ts`. While it is empty the contact button points to
+  LinkedIn; once set it becomes a "Send me an email" button.
+- **Projects** — add entries to `src/projects.ts`. While the list is empty the section, its menu
+  link and the hero button are not rendered.
+
+## Search engines and accessibility
+
+- Each language has its own URL with `canonical` and `hreflang` links, Open Graph tags and
+  schema.org `Person` data, all generated in `src/render.ts`.
+- `sitemap.xml` is generated on build; `robots.txt` is in `public/`.
+- Semantic landmarks, labelled sections, a skip link, keyboard-friendly menu and reduced-motion
+  support.
+
+## Structure
+
+```
+index.html, pt/index.html   HTML shells, filled at build time
+vite.config.ts              build + prerender plugin
+src/render.ts               page HTML, <head> tags, sitemap
+src/main.ts                 browser behaviour (menu, scroll effects)
+src/config.ts               language-independent data
+src/projects.ts             projects list
+src/i18n/                   dictionaries and languages
+src/sections/               one function per page section
+content/articles/           articles from the previous blog (not published)
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Deploy
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+`.github/workflows/deploy-pages.yml` builds every pull request, and on pushes to `master` builds
+and publishes `dist/` to GitHub Pages.
