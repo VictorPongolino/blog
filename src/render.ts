@@ -63,7 +63,7 @@ function head(locale: Locale): string {
   const preview = site.photo
     ? { url: absoluteUrl(site.photo), alt: esc(t.hero.photoAlt), size: [] }
     : {
-        url: absoluteUrl(site.socialImage.path),
+        url: absoluteUrl(site.socialImage.paths[locale]),
         alt: title,
         size: [
           `<meta property="og:image:width" content="${site.socialImage.width}" />`,

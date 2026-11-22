@@ -15,10 +15,14 @@ export const site = {
    */
   photo: '',
   /**
-   * Image shown in link previews (LinkedIn, WhatsApp, X…) while `photo` is empty.
-   * 1200×630 PNG in public/images/.
+   * Images shown in link previews (LinkedIn, WhatsApp, X…) while `photo` is empty, one per
+   * language because the text is part of the picture. 1200×630 PNGs in public/images/.
    */
-  socialImage: { path: '/images/social-preview.png', width: 1200, height: 630 },
+  socialImage: {
+    width: 1200,
+    height: 630,
+    paths: { en: '/images/social-preview.png', pt: '/images/social-preview-pt.png' },
+  },
   /** Used for projects without an image of their own */
   projectImageFallback: '/images/project-placeholder.svg',
   /**

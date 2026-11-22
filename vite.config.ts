@@ -21,6 +21,19 @@ function prerender(): Plugin {
           .replace('<!--app-->', page.body);
       },
     },
+    // The dev server has no build output, so it serves the generated files directly.
+    configureServer(server) {
+      const generated = [
+        { path: '/sitemap.xml', type: 'application/xml', render: renderSitemap },
+        { path: '/robots.txt', type: 'text/plain; charset=utf-8', render: renderRobots },
+      ];
+      for (const file of generated) {
+        server.middlewares.use(file.path, (_req, res) => {
+          res.setHeader('Content-Type', file.type);
+          res.end(file.render());
+        });
+      }
+    },
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: renderSitemap() });
       this.emitFile({ type: 'asset', fileName: 'robots.txt', source: renderRobots() });

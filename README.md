@@ -27,15 +27,15 @@ npm run preview
 
 ## Where to change things
 
-| What                                    | Where                              |
-| --------------------------------------- | ---------------------------------- |
-| Texts (English)                         | `src/i18n/en.ts`                   |
-| Texts (Portuguese)                      | `src/i18n/pt.ts`                   |
-| Photo, e-mail, social links, site URL   | `src/config.ts`                    |
-| Link preview image                      | `public/images/social-preview.png` |
-| Projects (empty list hides the section) | `src/projects.ts`                  |
-| Images                                  | `public/images/`                   |
-| Colors and fonts                        | `@theme` block in `src/style.css`  |
+| What                                    | Where                               |
+| --------------------------------------- | ----------------------------------- |
+| Texts (English)                         | `src/i18n/en.ts`                    |
+| Texts (Portuguese)                      | `src/i18n/pt.ts`                    |
+| Photo, e-mail, social links, site URL   | `src/config.ts`                     |
+| Link preview images                     | `public/images/social-preview*.png` |
+| Projects (empty list hides the section) | `src/projects.ts`                   |
+| Images                                  | `public/images/`                    |
+| Colors and fonts                        | `@theme` block in `src/style.css`   |
 
 `pt.ts` is typed against `en.ts`, so the build fails if a translation is missing.
 
@@ -55,7 +55,8 @@ npm run preview
 - `sitemap.xml` and `robots.txt` are generated on build from `url` in `src/config.ts`. That URL
   must be the address the site is served from (the custom domain in the Pages settings and
   `public/CNAME`); an address that only redirects there makes every canonical link wrong.
-- Link previews use `public/images/social-preview.png` (1200×630) until a photo is set.
+- Link previews use `public/images/social-preview.png` and `social-preview-pt.png` (1200×630, one
+  per language) until a photo is set.
 - Semantic landmarks, labelled sections, a skip link, keyboard-friendly menu and reduced-motion
   support.
 
@@ -64,7 +65,7 @@ npm run preview
 ```
 index.html, pt/index.html   HTML shells, filled at build time
 vite.config.ts              build + prerender plugin
-src/render.ts               page HTML, <head> tags, sitemap
+src/render.ts               page HTML, <head> tags, sitemap, robots.txt
 src/main.ts                 browser behaviour (menu, scroll effects)
 src/config.ts               language-independent data
 src/projects.ts             projects list
